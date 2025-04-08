@@ -1,3 +1,6 @@
-## Licence
+> ⚠️ **Notice:** This code is published for viewing purposes only.  
+> **Do not use, copy, or distribute without explicit permission.**
+## License
 
-Ce projet n'est pas sous licence libre. **Toute utilisation, reproduction ou modification du code est interdite sans autorisation explicite de l’auteur.**
+This project is not open source and does not grant any license for use, reproduction, or modification.  
+**All rights are reserved by the author. Unauthorized use is strictly prohibited.**
