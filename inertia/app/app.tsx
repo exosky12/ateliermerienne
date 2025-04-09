@@ -12,17 +12,22 @@ const appName = import.meta.env.VITE_APP_NAME || 'Atelier Merienne'
 createInertiaApp({
   progress: { color: '#5468FF' },
 
-  title: (title) => `${title} - ${appName}`,
+  title: (title) => (title ? `${title} - ${appName}` : appName),
 
   resolve: async (name) => {
     const page = await resolvePageComponent(
       `../pages/${name}.tsx`,
       import.meta.glob('../pages/**/*.tsx')
+    ) as { default: React.ComponentType<any> }
+
+    const Page = page.default
+    const WrappedPage = (props: any) => (
+      <AppLayout>
+        <Page {...props} />
+      </AppLayout>
     )
 
-    page.default.layout = page.default.layout || AppLayout
-
-    return page
+    return { default: WrappedPage }
   },
 
   setup({ el, App, props }) {
