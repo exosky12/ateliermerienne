@@ -16,7 +16,7 @@ export const Navbar = () => {
   return (
     <header
       className={
-        'flex border-b border-black justify-between items-center py-4 xl:py-9 px-4 md:px-[4%] relative'
+        'sticky top-0 bg-white z-50 flex border-b border-black justify-between items-center py-4 xl:py-9 px-4 md:px-[4%] relative'
       }
     >
       <MobileNav links={NavLinks} />

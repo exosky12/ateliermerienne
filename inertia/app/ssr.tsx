@@ -8,11 +8,16 @@ export default function render(page: any) {
     render: ReactDOMServer.renderToString,
     resolve: (name) => {
       const pages = import.meta.glob('../pages/**/*.tsx', { eager: true })
-      const resolvedPaged = pages[`../pages/${name}.tsx`]
+      const resolvedPaged = pages[`../pages/${name}.tsx`] as { default: React.ComponentType<any> }
 
-      resolvedPaged.default.layout = resolvedPaged.default.layout || AppLayout
+      const Page = resolvedPaged.default
+      const WrappedPage = (props: any) => (
+        <AppLayout>
+          <Page {...props} />
+        </AppLayout>
+      )
 
-      return resolvedPaged
+      return { default: WrappedPage }
     },
     setup: ({ App, props }) => <App {...props} />,
   })
