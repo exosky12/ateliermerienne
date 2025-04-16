@@ -1,4 +1,4 @@
-import { MobileNav } from '~/components/navbar/MobileNav'
+import { MobileNav } from '~/components/navBar/mobileNav'
 import { Link } from '@inertiajs/react'
 import { Search, ShoppingBasket, UserRound } from 'lucide-react'
 
@@ -12,7 +12,7 @@ const NavLinks = [
 
 export type NavLink = (typeof NavLinks)[number]
 
-export const Navbar = () => {
+export const NavBar = () => {
   return (
     <header
       className={
@@ -21,7 +21,7 @@ export const Navbar = () => {
     >
       <MobileNav links={NavLinks} />
 
-      <ul className="hidden xl:flex gap-4 text-sm">
+      <ul className="hidden xl:flex gap-6 text-sm">
         {NavLinks.map((link) => (
           <li key={link.href}>
             <Link href={link.href}>{link.label}</Link>
@@ -56,7 +56,7 @@ export const Navbar = () => {
           <Search strokeWidth={1} />
         </Link>
 
-        <Link href={''}>
+        <Link href={'/'}>
           <UserRound strokeWidth={1} />
         </Link>
 
