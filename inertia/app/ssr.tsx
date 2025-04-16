@@ -1,23 +1,19 @@
 import ReactDOMServer from 'react-dom/server'
 import { createInertiaApp } from '@inertiajs/react'
-import { AppLayout } from '~/layouts/AppLayout'
+import { Layout } from '~/components/layout/app'
+import type { ReactNode } from 'react'
 
 export default function render(page: any) {
   return createInertiaApp({
     page,
     render: ReactDOMServer.renderToString,
     resolve: (name) => {
-      const pages = import.meta.glob('../pages/**/*.tsx', { eager: true })
-      const resolvedPaged = pages[`../pages/${name}.tsx`] as { default: React.ComponentType<any> }
+      const pages = import.meta.glob<any>('../pages/**/*.tsx', { eager: true })
+      let page = pages[`../pages/${name}.tsx`]
 
-      const Page = resolvedPaged.default
-      const WrappedPage = (props: any) => (
-        <AppLayout>
-          <Page {...props} />
-        </AppLayout>
-      )
+      page.default.layout || ((children: ReactNode) => <Layout>{children}</Layout>)
 
-      return { default: WrappedPage }
+      return page
     },
     setup: ({ App, props }) => <App {...props} />,
   })

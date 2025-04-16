@@ -1,4 +1,4 @@
-import { type NavLink } from '~/components/navbar/Navbar'
+import { type NavLink } from '~/components/navBar/navBar'
 import { useState } from 'react'
 import { Link } from '@inertiajs/react'
 import { Menu, X } from 'lucide-react'
