@@ -2,6 +2,7 @@ import ReactDOMServer from 'react-dom/server'
 import { createInertiaApp } from '@inertiajs/react'
 import { Layout } from '~/components/layout/app'
 import type { ReactNode } from 'react'
+import 'virtual:uno.css'
 
 export default function render(page: any) {
   return createInertiaApp({

@@ -3,7 +3,9 @@ import type { ReactNode } from 'react'
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className={'flex flex-col w-full min-h-screen'}>
+    <div
+      className={'flex text-lg flex-col w-full min-h-screen bg-background text-primary font-sans'}
+    >
       <NavBar />
 
       <main className={'grow min-h-screen'}>{children}</main>
