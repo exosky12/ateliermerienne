@@ -9,7 +9,11 @@ export default defineConfig({
   },
 
   presets: [
-    presetWind4(),
+    presetWind4({
+      preflights: {
+        reset: true,
+      },
+    }),
     presetWebFonts({
       themeKey: 'font',
       provider: 'bunny',
