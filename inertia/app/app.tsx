@@ -4,6 +4,7 @@
 import '../css/app.css'
 import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
+import 'virtual:uno.css'
 
 import { Layout } from '~/components/layout/app'
 import type { ComponentType } from 'react'
