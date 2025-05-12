@@ -14,7 +14,7 @@ const LoginController = () => import('#controllers/login_controller')
 const RegisterController = () => import('#controllers/register_controller')
 const HomeController = () => import('#controllers/home_controller')
 
-router.get('/', [HomeController, 'index']).as('home.index')
+router.get('/', [HomeController, 'render']).as('home.index').use(middleware.silent())
 
 router
   .group(() => {
