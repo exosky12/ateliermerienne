@@ -1,7 +1,6 @@
 import ReactDOMServer from 'react-dom/server'
 import { createInertiaApp } from '@inertiajs/react'
 import { Layout } from '~/components/layout/app'
-import type { ReactNode } from 'react'
 import 'virtual:uno.css'
 
 export default function render(page: any) {
@@ -12,9 +11,14 @@ export default function render(page: any) {
       const pages = import.meta.glob<any>('../pages/**/*.tsx', { eager: true })
       let page = pages[`../pages/${name}.tsx`]
 
-      page.default.layout || ((children: ReactNode) => <Layout>{children}</Layout>)
+      const Page = page.default
+      const WrappedPage = (props: any) => (
+        <Layout>
+          <Page {...props} />
+        </Layout>
+      )
 
-      return page
+      return { default: WrappedPage }
     },
     setup: ({ App, props }) => <App {...props} />,
   })
