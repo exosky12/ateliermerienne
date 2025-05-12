@@ -5,7 +5,6 @@ export default class LogoutController {
     await this.execute(ctx)
   }
   async execute({ auth, response }: HttpContext) {
-    console.log('te')
     await auth.use('web').logout()
     response.redirect().toRoute('home.index')
   }
