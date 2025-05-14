@@ -1,14 +1,11 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import drive from '@adonisjs/drive/services/main'
 import { registerValidator } from '#validators/auth'
 import User from '#models/user'
 
 export default class RegisterController {
   async render({ inertia, request }: HttpContext) {
     const csrfToken = request.csrfToken
-    const disk = drive.use()
-    const fileURL = await disk.getUrl('sacSweety.png')
-    return inertia.render('register/index', { fileURL, csrfToken })
+    return inertia.render('register/index', { csrfToken })
   }
 
   async store({ request, response, auth }: HttpContext) {

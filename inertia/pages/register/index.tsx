@@ -3,17 +3,16 @@ import { Socials } from '~/components/socials/socials'
 import { Button } from '~/components/button/button'
 
 interface RegisterProps {
-  fileURL: string
   csrfToken: string
 }
 
-export default function Register({ fileURL, csrfToken }: RegisterProps) {
+export default function Register({ csrfToken }: RegisterProps) {
   const { props } = usePage()
   const errors = props.errors ?? {}
   return (
     <div className="flex h-screen">
       <Head title="Inscription" />
-      <div className="flex flex-col flex-1 justify-center xl:max-w-full m-auto w-full sm:max-w-2/3 items-center gap-12 px-8">
+      <div className="flex flex-col flex-1 justify-center xl:max-w-full m-auto w-full sm:max-w-2/3 items-center gap-12 px-2 sm:px-8">
         <h2 className="font-title font-bold text-5xl">S'inscrire</h2>
 
         <Socials />
@@ -76,15 +75,12 @@ export default function Register({ fileURL, csrfToken }: RegisterProps) {
           </div>
           <Button type={'submit'} text="S'inscire" />
         </form>
-        <span>
+        <span className={'text-center'}>
           Vous avez déjà un compte ?{' '}
-          <Link className={'underline'} href={'/connexion'}>
+          <Link className={'underline'} href={'/auth/connexion'}>
             Connectez-vous
           </Link>{' '}
         </span>
-      </div>
-      <div className="hidden xl:h-full xl:flex">
-        <img src={fileURL} alt="Sac Sweety" className="h-full rounded-none w-auto object-cover" />
       </div>
     </div>
   )

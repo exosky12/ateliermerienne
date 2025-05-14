@@ -3,17 +3,16 @@ import { Socials } from '~/components/socials/socials'
 import { Button } from '~/components/button/button'
 
 interface LoginProps {
-  fileURL: string
   csrfToken: string
 }
 
-export default function Login({ fileURL, csrfToken }: LoginProps) {
+export default function Login({ csrfToken }: LoginProps) {
   const { props } = usePage()
   const errors = props.errors ?? {}
   return (
     <div className="flex h-screen">
       <Head title="Connexion" />
-      <div className="flex flex-col flex-1 justify-center xl:max-w-full m-auto max-w-2/3 items-center gap-12 px-8">
+      <div className="flex flex-col z-10 flex-1 justify-center m-auto max-w-screen sm:max-w-2/3 items-center gap-12 px-2 sm:px-8">
         <h2 className="font-title font-bold text-5xl">Se connecter</h2>
 
         <Socials />
@@ -71,15 +70,12 @@ export default function Login({ fileURL, csrfToken }: LoginProps) {
           <Button type={'submit'} text="Se connecter" />
         </form>
 
-        <span>
+        <span className={'text-center'}>
           Vous n'avez pas encore de compte ?{' '}
-          <Link className={'underline'} href={'/inscription'}>
+          <Link className={'underline'} href={'/auth/inscription'}>
             Inscrivez-vous
           </Link>{' '}
         </span>
-      </div>
-      <div className="hidden xl:h-full xl:flex">
-        <img src={fileURL} alt="Sac Sweety" className="h-full rounded-none w-auto object-cover" />
       </div>
     </div>
   )
