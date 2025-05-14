@@ -6,13 +6,13 @@ export const Footer = () => {
   return (
     <footer
       className={
-        'mt-12 rounded-tl-[120px] rounded-tr-[120px] bg-primary flex flex-col gap-12 text-white px-32 pt-12 pb-4 items-center'
+        'mt-12 sm:rounded-tl-[80px] text-sm lg:text-base sm:rounded-tr-[80px] lg:rounded-tl-[120px] lg:rounded-tr-[120px] bg-primary flex flex-col gap-6 lg:gap-12 text-white px-6 md:px-12 lg:px-32 pt-12 pb-4 items-center'
       }
     >
-      <div className={'flex justify-between w-full'}>
-        <div className={'flex flex-col gap-8'}>
-          <h2 className={'font-title text-xl font-bold'}>Atelier Merienne</h2>
-          <ul className="flex flex-col gap-3">
+      <div className={'flex flex-col gap-12 justify-between w-full'}>
+        <div className={'flex gap-8 sm:flex-col'}>
+          <h2 className={'hidden sm:flex font-title text-xl font-bold'}>Atelier Merienne</h2>
+          <ul className="flex flex-wrap gap-5 flex-col lg:gap-3">
             {NavLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href}>{link.label}</Link>
@@ -23,7 +23,7 @@ export const Footer = () => {
         </div>
 
         <div className={'flex flex-col gap-8'}>
-          <div className={'flex gap-2'}>
+          <div className={'flex gap-4'}>
             <svg
               width="32"
               height="32"
@@ -139,19 +139,21 @@ export const Footer = () => {
               />
             </svg>
           </div>
-          <div className={'flex flex-col gap-2 items-end'}>
+          <div className={'flex flex-col gap-2 lg:items-end'}>
             <span>Recevez nos nouveautés et nos exclusivités en avant-première.</span>
-            <input
-              id="emailNewsletter"
-              type="email"
-              placeholder="entrez votre mail"
-              className="rounded-xl border-white border-2 p-4 w-full"
-            />
-            <Button type={'submit'} variant={'secondary'} text="S'abonner" />
+            <div className={'flex flex-col xs:flex-row gap-4 w-full '}>
+              <input
+                id="emailNewsletter"
+                type="email"
+                placeholder="entrez votre mail"
+                className="rounded-xl border-white border-2 p-4 w-full"
+              />
+              <Button type={'submit'} variant={'secondary'} text="S'abonner" />
+            </div>
           </div>
         </div>
       </div>
-      <ul className={'flex text-gray-300 gap-4'}>
+      <ul className={'flex flex-wrap text-gray-300 gap-4'}>
         <li>
           <Link href={'/conditions-generales-de-vente'}>Conditions générales de vente</Link>
         </li>
