@@ -15,15 +15,15 @@ export const NavBar = () => {
   return (
     <header
       className={
-        'sticky top-0 z-50 flex bg-background border-primary border-b-2 justify-between items-center px-[20px] sm:px-[70px] lg:px-[100px] xl:px-[170px] py-4'
+        'sticky top-0 z-50 flex bg-background border-primary border-b-2 justify-between items-center px-[20px] xl:px-[120px] py-4'
       }
     >
       <Link href={'/'}>
-        <h1 className="font-title font-bold text-xl">Atelier Merienne</h1>
+        <h1 className="font-title hidden sm:flex font-bold text-xl">Atelier Merienne</h1>
       </Link>
       <MobileNav links={NavLinks} />
 
-      <ul className="hidden xl:flex gap-6">
+      <ul className="hidden lg:flex gap-6">
         {NavLinks.map((link) => (
           <li key={link.href}>
             <Link href={link.href}>{link.label}</Link>
@@ -32,7 +32,7 @@ export const NavBar = () => {
       </ul>
 
       <div className="inline-flex gap-4">
-        <Link className={'flex flex-col items-center'} href={'/connexion'}>
+        <Link className={'flex flex-col items-center'} href={'/auth/connexion'}>
           <svg
             width="25"
             height="25"

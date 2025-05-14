@@ -15,7 +15,7 @@ export const MobileNav = ({ links }: MobileNavBarProps) => {
   }
 
   return (
-    <div className="xl:hidden order-first">
+    <div className="lg:hidden order-first">
       <button
         onClick={handleClick}
         className="p-2"
