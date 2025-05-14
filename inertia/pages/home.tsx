@@ -4,7 +4,7 @@ import User from '#models/user'
 
 export default function Home() {
   const { props } = usePage()
-  const user: User = props.user ?? {}
+  const user = props.user as User
   return (
     <>
       <Head title="Accueil" />

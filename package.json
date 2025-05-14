@@ -57,6 +57,7 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
+    "@adonisjs/ally": "^5.1.0",
     "@adonisjs/auth": "^9.4.0",
     "@adonisjs/core": "^6.17.2",
     "@adonisjs/cors": "^2.2.1",
@@ -78,14 +79,14 @@
     "clsx": "^2.1.1",
     "edge.js": "^6.2.1",
     "install": "^0.13.0",
-    "lucide-react": "^0.487.0",
+    "lucide-react": "^0.510.0",
     "luxon": "^3.6.1",
     "npm": "^11.3.0",
     "pg": "^8.14.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "reflect-metadata": "^0.2.2",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.3.0"
   },
   "hotHook": {
     "boundaries": [
