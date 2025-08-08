@@ -17,12 +17,12 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div
       className={
-        'flex text-[16px] flex-col w-full min-h-screen bg-background text-primary font-sans'
+        'flex text-[16px] flex-col w-full min-h-screen bg-background text-primary font-geist'
       }
     >
       <NavBar />
 
-      <main className={'grow min-h-screen'}>{children}</main>
+      <main className={'grow min-h-screen font-geist'}>{children}</main>
       <Footer />
     </div>
   )
