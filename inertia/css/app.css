@@ -8,3 +8,15 @@ body {
   height: 100%;
   width: 100%;
 }
+
+
+.font-title {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.04em;
+}
+
+.font-geist {
+  font-family: 'Geist', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
