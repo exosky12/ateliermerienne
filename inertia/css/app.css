@@ -20,3 +20,7 @@ body {
   letter-spacing: -0.02em;
   font-weight: 400;
 }
+
+.btn {
+  border: inherit;
+}

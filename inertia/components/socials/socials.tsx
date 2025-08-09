@@ -1,31 +1,10 @@
 export const Socials = () => {
   return (
-    <div className={'flex w-full flex-col gap-2'}>
-      <a
-        href={'/auth/facebook'}
-        className={
-          'btn cursor-pointer bg-[#1877F2] text-white py-5 px-4 font-bold flex gap-2 items-center justify-center'
-        }
-      >
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="24" height="24" transform="translate(0.5)" fill="#1877F2" />
-          <path
-            d="M24 12.0699C24 5.7186 18.8513 0.56988 12.5 0.56988C6.14872 0.56988 1 5.7186 1 12.0699C1 17.8099 5.20538 22.5674 10.7031 23.4302V15.3941H7.7832V12.0699H10.7031V9.53629C10.7031 6.6541 12.42 5.06207 15.0468 5.06207C16.305 5.06207 17.6211 5.28668 17.6211 5.28668V8.11675H16.171C14.7424 8.11675 14.2969 9.00322 14.2969 9.91266V12.0699H17.4863L16.9765 15.3941H14.2969V23.4302C19.7946 22.5674 24 17.8099 24 12.0699Z"
-            fill="white"
-          />
-        </svg>
-        Continuer avec Facebook
-      </a>
+    <div className={'flex w-full gap-3'}>
       <a
         href={'/auth/google'}
         className={
-          'btn cursor-pointer bg-white text-black py-5 px-4 font-bold flex gap-2 items-center justify-center'
+          'cursor-pointer font-normal rounded-2xl border-2 border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-5 px-4 font-bold flex gap-3 items-center justify-center'
         }
       >
         <svg
@@ -62,6 +41,26 @@ export const Socials = () => {
           />
         </svg>
         Continuer avec Google
+      </a>
+      <a
+        href={'/auth/facebook'}
+        className={
+          'cursor-pointer font-normal rounded-2xl border-2 border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-5 px-4 font-bold flex gap-3 items-center justify-center'
+        }
+      >
+        <svg
+          width="24"
+          height="23"
+          viewBox="0 0 24 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23.5 11.5698C23.5 5.21857 18.3513 0.069849 12 0.069849C5.64872 0.069849 0.5 5.21857 0.5 11.5698C0.5 17.3098 4.70538 22.0674 10.2031 22.9301V14.8941H7.2832V11.5698H10.2031V9.03626C10.2031 6.15407 11.92 4.56204 14.5468 4.56204C15.805 4.56204 17.1211 4.78665 17.1211 4.78665V7.61672H15.671C14.2424 7.61672 13.7969 8.50319 13.7969 9.41263V11.5698H16.9863L16.4765 14.8941H13.7969V22.9301C19.2946 22.0674 23.5 17.3098 23.5 11.5698Z"
+            fill="#1877F2"
+          />
+        </svg>
+        Continuer avec Facebook
       </a>
     </div>
   )
