@@ -9,7 +9,7 @@ export function Layout({ children }: { children: ReactNode }) {
     btns.forEach((btn) =>
       addCorners(btn, {
         smoothing: 1,
-        borderRadius: 18,
+        borderRadius: 16,
         clip: true,
       })
     )
