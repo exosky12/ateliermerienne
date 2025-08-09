@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const Button = ({ text, type, variant = 'primary' }: ButtonProps) => {
-  const cummonStyle = 'btn cursor-pointer w-fit text-base border-none px-8 py-4.5'
+  const cummonStyle = 'btn cursor-pointer w-fit text-base px-8 py-4.5'
   return variant === 'primary' ? (
     <button type={type} className={twMerge(cummonStyle, 'text-white bg-accent')}>
       {text}

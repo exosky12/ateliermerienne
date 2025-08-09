@@ -26,7 +26,7 @@ export default function Register({ csrfToken }: RegisterProps) {
         <form
           className="flex items-center w-full flex-col gap-4"
           method="POST"
-          action={'/inscription'}
+          action={'/auth/inscription'}
           suppressHydrationWarning
         >
           <input type="hidden" name="_csrf" value={csrfToken} />
