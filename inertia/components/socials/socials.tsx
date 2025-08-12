@@ -4,7 +4,7 @@ export const Socials = () => {
       <a
         href={'/auth/google'}
         className={
-          'cursor-pointer font-normal rounded-2xl border-2 border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-5 px-4 font-bold flex gap-3 items-center justify-center'
+          'cursor-pointer font-normal rounded-2xl border border-solid border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-4 px-4 font-bold flex gap-3 items-center justify-center'
         }
       >
         <svg
@@ -45,7 +45,7 @@ export const Socials = () => {
       <a
         href={'/auth/facebook'}
         className={
-          'cursor-pointer font-normal rounded-2xl border-2 border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-5 px-4 font-bold flex gap-3 items-center justify-center'
+          'cursor-pointer font-normal rounded-2xl border border-solid border-strokeGrey w-full bg-white decoration-none text-black text-[14px] py-4 px-4 font-bold flex gap-3 items-center justify-center'
         }
       >
         <svg
