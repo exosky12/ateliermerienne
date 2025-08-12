@@ -1,6 +1,6 @@
 export const Socials = () => {
   return (
-    <div className={'flex w-full gap-3'}>
+    <div className={'flex md:flex-row flex-col w-full gap-3'}>
       <a
         href={'/auth/google'}
         className={
