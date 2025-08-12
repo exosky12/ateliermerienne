@@ -1,4 +1,4 @@
-import { defineConfig, presetWind } from 'unocss'
+import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
   theme: {
@@ -10,5 +10,5 @@ export default defineConfig({
       strokeGrey: '#E3ECF1',
     },
   },
-  presets: [presetWind()],
+  presets: [presetUno()],
 })
