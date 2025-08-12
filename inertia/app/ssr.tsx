@@ -1,5 +1,7 @@
 import ReactDOMServer from 'react-dom/server'
 import { createInertiaApp } from '@inertiajs/react'
+import '../css/app.css'
+import 'uno.css'
 import { InertiaPage } from './app'
 import { Layout } from '~/components/layout/app'
 
