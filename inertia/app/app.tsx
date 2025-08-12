@@ -4,33 +4,24 @@
 import '../css/app.css'
 import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
-import 'virtual:uno.css'
-
-import { Layout } from '~/components/layout/app'
-import type { ComponentType } from 'react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { Layout } from '~/components/layout/app'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Atelier Merienne'
+export type InertiaPage = Function & { layout?: (element: React.JSX.Element) => React.JSX.Element }
+const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 
-void createInertiaApp({
+createInertiaApp({
   progress: { color: '#5468FF' },
 
-  title: (title) => (title ? `${title} - ${appName}` : appName),
+  title: (title) => `${title} - ${appName}`,
 
   resolve: async (name) => {
-    const page = (await resolvePageComponent(
+    const page = await resolvePageComponent(
       `../pages/${name}.tsx`,
-      import.meta.glob('../pages/**/*.tsx')
-    )) as { default: ComponentType<any> }
-
-    const Page = page.default
-    const WrappedPage = (props: any) => (
-      <Layout>
-        <Page {...props} />
-      </Layout>
+      import.meta.glob<{ default: InertiaPage }>('../pages/**/*.tsx')
     )
-
-    return { default: WrappedPage }
+    page.default.layout = page.default.layout || ((page) => <Layout children={page} />)
+    return page
   },
 
   setup({ el, App, props }) {
