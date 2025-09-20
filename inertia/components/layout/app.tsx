@@ -1,7 +1,21 @@
 import { NavBar } from '~/components/navBar/navBar'
 import { ReactNode } from 'react'
+
+import type { PageProps } from '@adonisjs/inertia/types'
+import { usePage } from '@inertiajs/react'
+import { AdminNavBar } from '~/components/adminNavBar/adminNavBar'
+
 // import { addCorners } from '@monokai/monoco'
-import { Footer } from '~/components/footer/footer'
+
+export interface AuthPageProps extends PageProps {
+  auth: {
+    user: {
+      id: number
+      email: string
+      isAdmin: boolean
+    } | null
+  }
+}
 
 export function Layout({ children }: { children: ReactNode }) {
   // useEffect(() => {
@@ -14,6 +28,10 @@ export function Layout({ children }: { children: ReactNode }) {
   //     })
   //   )
   // }, [])
+  const props: any = usePage().props
+
+  console.log(props)
+
   return (
     <div
       className={
@@ -22,8 +40,9 @@ export function Layout({ children }: { children: ReactNode }) {
     >
       <NavBar />
 
+      {props.user?.isAdmin && props.user?.isAdmin && <AdminNavBar />}
+
       <main className={'grow min-h-screen font-geist'}>{children}</main>
-      <Footer />
     </div>
   )
 }
