@@ -11,6 +11,7 @@ export default defineConfig({
     react(),
     adonisjs({ entrypoints: ['inertia/app/AppLayout.tsx'], reload: ['resources/views/**/*.edge'] }),
     UnoCSS(),
+    adonisjs({ entrypoints: ['inertia/app/app.tsx'], reload: ['resources/views/**/*.edge'] }),
   ],
 
   /**

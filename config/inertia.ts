@@ -12,7 +12,15 @@ const inertiaConfig = defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.session?.flashMessages.get('errors') ?? {},
-    user: (ctx) => ctx.inertia.always(() => ctx.auth.user),
+    user: (ctx) =>
+      ctx.auth?.user
+        ? {
+            id: ctx.auth.user.id,
+            fullName: ctx.auth.user.fullName,
+            email: ctx.auth.user.email,
+            isAdmin: ctx.auth.user.isAdmin,
+          }
+        : null,
   },
 
   /**
