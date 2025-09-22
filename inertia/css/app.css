@@ -87,7 +87,12 @@ input {
   background-color: transparent;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
+ul, li {
+list-style: none;
+}
+
+
