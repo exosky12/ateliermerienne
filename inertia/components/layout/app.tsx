@@ -30,8 +30,6 @@ export function Layout({ children }: { children: ReactNode }) {
   // }, [])
   const props: any = usePage().props
 
-  console.log(props)
-
   return (
     <div
       className={
