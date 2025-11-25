@@ -61,13 +61,13 @@ export default function Products({ csrfToken, products }: ProductsProps) {
                   Éditer
                 </button>
                 
-                <form method="POST" action={`/admin/products/${product.id}/delete`} onSubmit={(e) => {
+                <form method="POST" action={`/admin/products/${product.id}?_method=DELETE`} onSubmit={(e) => {
                   if (!confirm(`Êtes-vous sûr de vouloir supprimer "${product.name}" ?`)) {
                     e.preventDefault()
                   }
                 }}>
                   <input type="hidden" name="_csrf" value={csrfToken} />
-                  <input type="hidden" name="_method" value="DELETE" />
+                  <input type="hidden" name="_method" value="PUT" />
                   <button
                     type="submit"
                     className="px-4 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition-colors"
@@ -95,8 +95,8 @@ export default function Products({ csrfToken, products }: ProductsProps) {
               </button>
             </div>
 
-            <form method="POST" action={`/products/${editingProduct.id}/edit`} className="space-y-4">
-              <input type="hidden" name="_csrf" value={''} />
+            <form method="POST" action={`/admin/products/${editingProduct.id}?_method=PUT`} className="space-y-4">
+              <input type="hidden" name="_csrf" value={csrfToken} />
               <input type="hidden" name="_method" value="PUT" />
 
               {/* Nom du produit */}

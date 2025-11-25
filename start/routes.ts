@@ -55,15 +55,10 @@ router
 
     router.get('admin/products', [ProductsController, 'render']).as('admin.products.index')
     router.post('/admin/products', [ProductsController, 'store']).as('admin.products.store')
+    router.put('/admin/products/:id', [ProductsController, 'update']).as('admin.products.update')
     router
-      .post('/admin/products/:id/edit', [ProductsController, 'update'])
-      .as('admin.products.update')
-    router
-      .delete('/admin/products/:id/delete', [ProductsController, 'destroy'])
+      .delete('/admin/products/:id', [ProductsController, 'destroy'])
       .as('admin.products.destroy')
-    router
-      .post('/admin/products/:id/delete', [ProductsController, 'destroy'])
-      .as('admin.products.destroy.post')
   })
   .use(middleware.auth())
   .use(middleware.adminOnly())
