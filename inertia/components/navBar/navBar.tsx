@@ -89,7 +89,8 @@ export const NavBar = () => {
         <Link className={'flex flex-row gap-1 text-sm items-center'} href={''}>
           <svg
             width="24"
-            height="24"
+            height="24
+            "
             viewBox="0 0 18 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
