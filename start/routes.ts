@@ -57,7 +57,13 @@ router
     router.post('/admin/products', [ProductsController, 'store']).as('admin.products.store')
     router
       .post('/admin/products/:id/edit', [ProductsController, 'update'])
-      .as('admin.products.update.post')
+      .as('admin.products.update')
+    router
+      .delete('/admin/products/:id/delete', [ProductsController, 'destroy'])
+      .as('admin.products.destroy')
+    router
+      .post('/admin/products/:id/delete', [ProductsController, 'destroy'])
+      .as('admin.products.destroy.post')
   })
   .use(middleware.auth())
   .use(middleware.adminOnly())

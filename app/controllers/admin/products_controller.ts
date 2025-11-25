@@ -39,4 +39,10 @@ export default class ProductsController {
     await product.merge({ name, description, price, stock, imageUrl, isPublished }).save()
     return response.redirect('/admin/products')
   }
+
+  async destroy({ params, response }: HttpContext) {
+    const product = await Product.findOrFail(params.id)
+    await product.delete()
+    return response.redirect('/admin/products')
+  }
 }

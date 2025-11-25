@@ -1,17 +1,24 @@
-import type Product from '#models/product'
 import { useState } from 'react'
-import { Button } from '~/components/button/button'
 
-interface ProductsProps {
-  products: Product[]
-  csrfToken: string
+interface Product {
+  id: number
+  name: string
+  description: string
+  price: number
+  stock: number
+  isPublished: boolean
+  imageUrl: string
 }
 
-export default function Products({ products, csrfToken }: ProductsProps) {
+interface ProductsProps {
+  csrfToken: string
+  products: Product[]
+}
+
+export default function Products({ csrfToken, products }: ProductsProps) {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
 
   return (
-    <>
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Gestion des produits</h1>
 
@@ -46,12 +53,29 @@ export default function Products({ products, csrfToken }: ProductsProps) {
                 {product.isPublished ? "Publié" : "Non publié"}
               </span>
 
-              <button
-                onClick={() => setEditingProduct(product)}
-                className="px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 transition-colors"
-              >
-                Éditer
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setEditingProduct(product)}
+                  className="px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Éditer
+                </button>
+                
+                <form method="POST" action={`/admin/products/${product.id}/delete`} onSubmit={(e) => {
+                  if (!confirm(`Êtes-vous sûr de vouloir supprimer "${product.name}" ?`)) {
+                    e.preventDefault()
+                  }
+                }}>
+                  <input type="hidden" name="_csrf" value={csrfToken} />
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition-colors"
+                  >
+                    Supprimer
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         ))}
@@ -71,8 +95,8 @@ export default function Products({ products, csrfToken }: ProductsProps) {
               </button>
             </div>
 
-            <form method="POST" action={`/admin/products/${editingProduct.id}/edit`} className="space-y-4">
-              <input type="hidden" name="_csrf" value={csrfToken} />
+            <form method="POST" action={`/products/${editingProduct.id}/edit`} className="space-y-4">
+              <input type="hidden" name="_csrf" value={''} />
               <input type="hidden" name="_method" value="PUT" />
 
               {/* Nom du produit */}
@@ -189,102 +213,5 @@ export default function Products({ products, csrfToken }: ProductsProps) {
         </div>
       )}
     </div>
-      <div className="max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-md border border-gray-200 mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-8 text-gray-800 font-bold mb-6">Ajouter un produit</h1>
-
-        <form method="POST" action="/admin/products" className="space-y-6">
-          <input type="hidden" name="_csrf" value={csrfToken} />
-
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-1">
-              Nom du produit *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Ex: iPhone 15 Pro"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="description" className="block text-sm font-medium mb-1">
-              Description *
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              required
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Décrivez le produit..."
-            />
-          </div>
-
-          <div>
-            <label htmlFor="price" className="block text-sm font-medium mb-1">
-              Prix (€) *
-            </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              required
-              step="0.01"
-              min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="99.99"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="stock" className="block text-sm font-medium mb-1">
-              Stock *
-            </label>
-            <input
-              type="number"
-              id="stock"
-              name="stock"
-              required
-              min="0"
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="100"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="imageUrl" className="block text-sm font-medium mb-1">
-              URL de l'image *
-            </label>
-            <input
-              type="url"
-              id="imageUrl"
-              name="imageUrl"
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="https://example.com/image.jpg"
-            />
-          </div>
-
-          <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="isPublished"
-            name="isPublished"
-            value="true"
-            className="w-4 h-4 border-gray-300 text-blue-600 rounded focus:ring-blue-500"
-          />
-
-            <label htmlFor="isPublished" className="ml-2 text-sm font-medium">
-              Publier le produit immédiatement
-            </label>
-          </div>
-
-          <Button text="Ajouter le produit" type="submit" variant="primary" />
-        </form>
-      </div>
-    </>
   )
 }
