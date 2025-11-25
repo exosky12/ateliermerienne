@@ -16,8 +16,14 @@ const AuthController = () => import('#controllers/auth_controller')
 const LoginController = () => import('#controllers/login_controller')
 const RegisterController = () => import('#controllers/register_controller')
 const HomeController = () => import('#controllers/home_controller')
+const CreationsController = () => import('#controllers/creations_controller')
 
 router.get('/', [HomeController, 'render']).as('home.index').use(middleware.silent())
+
+router
+  .get('/creations', [CreationsController, 'render'])
+  .as('creations.index')
+  .use(middleware.silent())
 
 router
   .group(() => {
@@ -48,6 +54,10 @@ router
     router.delete('/admin/users/:id', [UsersController, 'destroy']).as('admin.users.destroy')
 
     router.get('admin/products', [ProductsController, 'render']).as('admin.products.index')
+    router.post('/admin/products', [ProductsController, 'store']).as('admin.products.store')
+    router
+      .post('/admin/products/:id/edit', [ProductsController, 'update'])
+      .as('admin.products.update.post')
   })
   .use(middleware.auth())
   .use(middleware.adminOnly())
