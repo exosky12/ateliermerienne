@@ -86,7 +86,7 @@ export const NavBar = () => {
           <span>compte</span>
         </Link>
 
-        <Link className={'flex flex-row gap-1 text-sm items-center'} href={''}>
+        <Link className={'flex flex-row gap-1 text-sm items-center'} href={'/panier'}>
           <svg
             width="24"
             height="24
