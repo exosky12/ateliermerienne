@@ -17,6 +17,7 @@ const LoginController = () => import('#controllers/login_controller')
 const RegisterController = () => import('#controllers/register_controller')
 const HomeController = () => import('#controllers/home_controller')
 const CreationsController = () => import('#controllers/creations_controller')
+const PanierController = () => import('#controllers/panier_controller')
 
 router.get('/', [HomeController, 'render']).as('home.index').use(middleware.silent())
 
@@ -63,3 +64,7 @@ router
   .use(middleware.auth())
   .use(middleware.adminOnly())
   .as('admin')
+
+router.get('/creations/:id', [CreationsController, 'show']).as('creations.show')
+router.post('/creations/:id', [CreationsController, 'store']).as('creations.store').use(middleware.auth())
+router.get('/panier', [PanierController, 'render']).as('panier.index').use(middleware.auth())
