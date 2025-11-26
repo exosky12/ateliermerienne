@@ -68,3 +68,5 @@ router
 router.get('/creations/:id', [CreationsController, 'show']).as('creations.show')
 router.post('/creations/:id', [CreationsController, 'store']).as('creations.store').use(middleware.auth())
 router.get('/panier', [PanierController, 'render']).as('panier.index').use(middleware.auth())
+router.delete('/panier/:id', [PanierController, 'destroy']).as('panier.destroy').use(middleware.auth())
+
