@@ -24,7 +24,6 @@ export default class CreationsController {
     const product = await Product.query().where('is_published', true).where('id', params.id).firstOrFail();
     auth.check();
     const user = auth.getUserOrFail();
-    console.log(user)
     await user.related('cart').sync([product.id], false)
     return response.redirect().back()
   }
