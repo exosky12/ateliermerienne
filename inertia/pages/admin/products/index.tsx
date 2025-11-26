@@ -20,6 +20,17 @@ export default function Products({ csrfToken, products }: ProductsProps) {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
+      <form method="POST" action="/admin/products">
+        <input type="hidden" name="_csrf" value={csrfToken} />
+        <input type="text" name="name" placeholder="Nom du produit" />
+        <input type="text" name="description" placeholder="Description du produit" />
+        <input type="number" name="price" placeholder="Prix du produit" />
+        <input type="number" name="stock" placeholder="Stock du produit" />
+        <input type="text" name="imageUrl" placeholder="URL de l'image du produit" />
+        <button type="submit" className="px-4 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 transition-colors">
+          Ajouter un produit
+        </button>
+      </form>
       <h1 className="text-2xl font-bold mb-6">Gestion des produits</h1>
 
       {/* Liste des produits */}
@@ -44,11 +55,10 @@ export default function Products({ csrfToken, products }: ProductsProps) {
 
             <div className="flex items-center justify-between">
               <span
-                className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
-                  product.isPublished
-                    ? "bg-green-100 text-green-700"
-                    : "bg-gray-200 text-gray-700"
-                }`}
+                className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${product.isPublished
+                  ? "bg-green-100 text-green-700"
+                  : "bg-gray-200 text-gray-700"
+                  }`}
               >
                 {product.isPublished ? "Publié" : "Non publié"}
               </span>
@@ -60,7 +70,7 @@ export default function Products({ csrfToken, products }: ProductsProps) {
                 >
                   Éditer
                 </button>
-                
+
                 <form method="POST" action={`/admin/products/${product.id}?_method=DELETE`} onSubmit={(e) => {
                   if (!confirm(`Êtes-vous sûr de vouloir supprimer "${product.name}" ?`)) {
                     e.preventDefault()
