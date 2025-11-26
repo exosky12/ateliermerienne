@@ -9,4 +9,23 @@ export default class CreationsController {
       products: serializedPublishedProducts,
     })
   }
+
+  async show({ inertia, params, request }: HttpContext) {
+    const csrfToken = request.csrfToken
+    const product = await Product.query().where('is_published', true).where('id', params.id).firstOrFail();
+    const serializedProduct = product.serialize()
+    return inertia.render('creations/show', {
+      product: serializedProduct,
+      csrfToken,
+    })
+  }
+
+  async store({ params, response, auth }: HttpContext) {
+    const product = await Product.query().where('is_published', true).where('id', params.id).firstOrFail();
+    auth.check();
+    const user = auth.getUserOrFail();
+    console.log(user)
+    await user.related('cart').sync([product.id], false)
+    return response.redirect().back()
+  }
 }
