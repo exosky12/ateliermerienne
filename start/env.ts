@@ -55,5 +55,14 @@ export default await Env.create(new URL('../', import.meta.url), {
   FACEBOOK_CLIENT_ID: Env.schema.string(),
   FACEBOOK_CLIENT_SECRET: Env.schema.string(),
   GOOGLE_CLIENT_ID: Env.schema.string(),
-  GOOGLE_CLIENT_SECRET: Env.schema.string()
+  GOOGLE_CLIENT_SECRET: Env.schema.string(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for @vbusatta/adonis-stripe
+  |----------------------------------------------------------
+  */
+  STRIPE_API_KEY: Env.schema.string(),
+  STRIPE_WEBHOOK: Env.schema.string.optional(),
+  STRIPE_API_VERSION: Env.schema.string.optional()
 })
