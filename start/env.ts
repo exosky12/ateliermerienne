@@ -64,5 +64,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   */
   STRIPE_API_KEY: Env.schema.string(),
   STRIPE_WEBHOOK: Env.schema.string.optional(),
-  STRIPE_API_VERSION: Env.schema.string.optional()
+  STRIPE_API_VERSION: Env.schema.string.optional(),
+
+  RESEND_API_KEY: Env.schema.string(),
 })

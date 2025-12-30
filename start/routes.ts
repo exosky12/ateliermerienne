@@ -12,6 +12,7 @@ import router from '@adonisjs/core/services/router'
 
 const ProductsController = () => import('#controllers/admin/products_controller')
 const UsersController = () => import('#controllers/admin/users_controller')
+const AccountController = () => import('#controllers/account_controller')
 const AuthController = () => import('#controllers/auth_controller')
 const LoginController = () => import('#controllers/login_controller')
 const RegisterController = () => import('#controllers/register_controller')
@@ -49,6 +50,33 @@ router
   .as('auth')
 
 router.get('/auth/logout', [AuthController, 'logout']).as('logout.execute').use(middleware.auth())
+
+router
+  .group(() => {
+    router.get('/compte', [AccountController, 'render']).as('account.index')
+    router.post('/compte/info', [AccountController, 'updateInfo']).as('account.info.update')
+
+    // Password Flow
+    router
+      .post('/compte/password/request', [AccountController, 'requestPasswordChange'])
+      .as('account.password.request')
+    router
+      .get('/compte/password/edit', [AccountController, 'editPassword'])
+      .as('account.password.edit')
+    router
+      .post('/compte/password/update', [AccountController, 'updatePassword'])
+      .as('account.password.update')
+
+    // Email Flow
+    router
+      .post('/compte/email/request', [AccountController, 'requestEmailChange'])
+      .as('account.email.request')
+    router.get('/compte/email/edit', [AccountController, 'editEmail']).as('account.email.edit')
+    router
+      .post('/compte/email/update', [AccountController, 'updateEmail'])
+      .as('account.email.update')
+  })
+  .use(middleware.auth())
 
 router
   .group(() => {
