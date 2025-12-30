@@ -20,7 +20,6 @@ const CreationsController = () => import('#controllers/creations_controller')
 const PanierController = () => import('#controllers/panier_controller')
 const PaymentsController = () => import('#controllers/payments_controller')
 
-
 router.get('/', [HomeController, 'render']).as('home.index').use(middleware.silent())
 
 router
@@ -68,14 +67,21 @@ router
   .as('admin')
 
 router.get('/creations/:id', [CreationsController, 'show']).as('creations.show')
-router.post('/creations/:id', [CreationsController, 'store']).as('creations.store').use(middleware.auth())
-router.get('/panier', [PanierController, 'render']).as('panier.index').use(middleware.auth())
-router.delete('/panier/:id', [PanierController, 'destroy']).as('panier.destroy').use(middleware.auth())
-
 router
-  .post('stripe/webhook', [PaymentsController, 'handleWebhook'])
+  .post('/creations/:id', [CreationsController, 'store'])
+  .as('creations.store')
+  .use(middleware.auth())
+router.get('/panier', [PanierController, 'render']).as('panier.index').use(middleware.auth())
+router
+  .delete('/panier/:id', [PanierController, 'destroy'])
+  .as('panier.destroy')
+  .use(middleware.auth())
+
+router.post('stripe/webhook', [PaymentsController, 'handleWebhook'])
 
 router.get('/payments/checkout', [PaymentsController, 'renderCheckout']).use(middleware.auth())
-router.post('/payments/checkout', [PaymentsController, 'createCheckoutSession']).use(middleware.auth())
+router
+  .post('/payments/checkout', [PaymentsController, 'createCheckoutSession'])
+  .use(middleware.auth())
 router.get('/payments/success', [PaymentsController, 'handleSuccess']).use(middleware.auth())
 router.get('/payments/cancel', [PaymentsController, 'handleCancel']).use(middleware.auth())
