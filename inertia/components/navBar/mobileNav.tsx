@@ -1,46 +1,47 @@
 import { type NavLink } from '~/components/navBar/navBar'
-import { useState } from 'react'
 import { Link } from '@inertiajs/react'
-import { Menu, X } from 'lucide-react'
+import { Menu } from 'lucide-react'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '~/components/ui/sheet'
+import { Button } from '~/components/ui/button'
+import { useState } from 'react'
 
 type MobileNavBarProps = {
   links: NavLink[]
 }
 
 export const MobileNav = ({ links }: MobileNavBarProps) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleClick = () => {
-    setIsOpen(!isOpen)
-  }
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="lg:hidden order-first">
-      <button
-        onClick={handleClick}
-        className="p-2"
-        aria-label={isOpen ? 'Fermer menu' : 'Ouvrir menu'}
-      >
-        {isOpen ? (
-          <X strokeWidth={2} color={'#4C3225'} />
-        ) : (
-          <Menu strokeWidth={2} color={'#4C3225'} />
-        )}
-      </button>
-
-      {isOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background z-50 border-b-2 border-primary py-4 px-6">
-          <ul className="flex flex-col gap-4">
-            {links.map((link: NavLink) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={handleClick} className="block py-2">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="p-0 hover:bg-transparent">
+            <Menu strokeWidth={2} color={'#4C3225'} />
+            <span className="sr-only">Ouvrir menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle className="text-left font-title font-italic">Menu</SheetTitle>
+          </SheetHeader>
+          <div className="py-4">
+            <ul className="flex flex-col gap-4">
+              {links.map((link: NavLink) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-2 text-primary hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }
