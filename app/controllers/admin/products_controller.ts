@@ -21,7 +21,7 @@ export default class ProductsController {
       'stock',
       'imageUrl',
     ])
-    const isPublished = request.input('isPublished') === 'true'
+    const isPublished = request.input('isPublished')
     await Product.create({ name, description, price, stock, imageUrl, isPublished })
     return response.redirect('/admin/products')
   }
@@ -34,7 +34,7 @@ export default class ProductsController {
       'stock',
       'imageUrl',
     ])
-    const isPublished = request.input('isPublished') === 'true'
+    const isPublished = request.input('isPublished')
     const product = await Product.findOrFail(params.id)
     await product.merge({ name, description, price, stock, imageUrl, isPublished }).save()
     return response.redirect('/admin/products')
