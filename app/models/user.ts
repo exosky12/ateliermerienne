@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany, hasMany, beforeSave } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
-import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { ManyToMany, HasMany } from '@adonisjs/lucid/types/relations'
 import Product from './product.js'
+import Order from './order.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -37,4 +38,14 @@ export default class User extends compose(BaseModel, AuthFinder) {
     pivotTable: 'carts',
   })
   declare cart: ManyToMany<typeof Product>
+
+  @hasMany(() => Order)
+  declare orders: HasMany<typeof Order>
+
+  @beforeSave()
+  static async hashUserPassword(user: User) {
+    if (user.$dirty.password) {
+      user.password = await hash.make(user.password!)
+    }
+  }
 }
