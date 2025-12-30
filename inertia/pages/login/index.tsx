@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react'
 import { Socials } from '~/components/socials/socials'
-import { Button } from '~/components/button/button'
-import { Input } from '~/components/input/input'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
 
 interface LoginProps {
   csrfToken: string
@@ -68,7 +68,9 @@ export default function Login({ csrfToken }: LoginProps) {
             {errors.E_INVALID_CREDENTIALS && (
               <span className="text-red-500 text-sm">{errors.E_INVALID_CREDENTIALS}</span>
             )}
-            <Button type={'submit'} text="Se connecter" />
+            <Button type={'submit'} className="w-full">
+              Se connecter
+            </Button>
           </form>
           <span className={'text-sm'}>
             Vous n'avez pas encore de compte ?{' '}

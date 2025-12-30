@@ -1,7 +1,7 @@
 import { Head, Link, usePage } from '@inertiajs/react'
 import { Socials } from '~/components/socials/socials'
-import { Button } from '~/components/button/button'
-import { Input } from '~/components/input/input'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
 
 interface RegisterProps {
   csrfToken: string
@@ -66,7 +66,9 @@ export default function Register({ csrfToken }: RegisterProps) {
                 )}
               </div>
             </div>
-            <Button type={'submit'} text="S'inscrire" />
+            <Button type={'submit'} className="w-full">
+              S'inscrire
+            </Button>
           </form>
           <span className={'text-sm'}>
             Vous avez déjà un compte ?{' '}

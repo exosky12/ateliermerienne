@@ -36,6 +36,7 @@ export default defineConfig({
         DEFAULT: 'hsl(var(--card))',
         foreground: 'hsl(var(--card-foreground))',
       },
+      strokeGrey: 'hsl(var(--stroke-grey))',
     },
     borderRadius: {
       lg: 'var(--radius)',
