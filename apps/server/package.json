@@ -1,5 +1,5 @@
 {
-	"name": "@pps/server",
+	"name": "@apps/server",
 	"type": "module",
 	"version": "0.0.0",
 	"private": true,
