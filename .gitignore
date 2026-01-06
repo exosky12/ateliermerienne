@@ -27,7 +27,6 @@ out
 .next
 .nuxt
 .output
-.turbo
 
 # Environnement
 .env
