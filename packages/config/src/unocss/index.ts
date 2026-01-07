@@ -16,8 +16,7 @@ export const sharedConfig = defineConfig({
 		presetWebFonts({
 			provider: "bunny",
 			fonts: {
-				sans: ["Outfit", "Inter"],
-				mono: ["Playfair Display", "Fira Code"],
+				sans: ["Jost", "Inter"],
 			},
 		}),
 	],

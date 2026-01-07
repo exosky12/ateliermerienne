@@ -5,8 +5,8 @@ const meta = {
 	component: Button,
 	title: "Atoms/Button",
 	argTypes: {
-		color: {
-			options: ["cyan", "violet", "red", "yellow", "lime"],
+		outlined: {
+			options: [true, false],
 			control: { type: "select" },
 		},
 		size: {
@@ -25,8 +25,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
 	args: {
-		children: "Click me",
+		children: "Ajouter au panier",
 		size: "md",
+		outlined: true,
 	},
 };
 
@@ -35,5 +36,6 @@ export const Link: Story = {
 		...Base.args,
 		href: "https://julesmerienne.dev",
 		children: "Go to Website",
+		outlined: false,
 	},
 };
