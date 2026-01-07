@@ -5,11 +5,16 @@
 	"license": "UNLICENSED",
 	"exports": {
 		"./eslint": "./src/eslint/eslint.config.js",
-		"./prettier": "./src/prettier/index.js"
+		"./prettier": "./src/prettier/index.js",
+		"./unocss": "./src/unocss/index.ts"
 	},
 	"devDependencies": {
 		"@julr/tooling-configs": "^4.0.0",
 		"eslint": "catalog:",
 		"prettier": "catalog:"
+	},
+	"dependencies": {
+		"@packages/design-system": "workspace:*",
+		"unocss": "catalog:"
 	}
 }

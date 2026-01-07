@@ -41,6 +41,7 @@
 		"jsdom": "^27.0.0",
 		"prettier": "catalog:",
 		"typescript": "catalog:",
+		"unocss": "catalog:",
 		"vite": "catalog:",
 		"vitest": "^3.0.5",
 		"web-vitals": "^5.1.0",

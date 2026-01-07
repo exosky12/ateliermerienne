@@ -1,0 +1,39 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "./button";
+
+const meta = {
+	component: Button,
+	title: "Atoms/Button",
+	argTypes: {
+		color: {
+			options: ["cyan", "violet", "red", "yellow", "lime"],
+			control: { type: "select" },
+		},
+		size: {
+			options: ["sm", "md", "lg"],
+			control: { type: "select" },
+		},
+		children: {
+			control: "text",
+		},
+	},
+} satisfies Meta<typeof Button>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Base: Story = {
+	args: {
+		children: "Click me",
+		size: "md",
+	},
+};
+
+export const Link: Story = {
+	args: {
+		...Base.args,
+		href: "https://julesmerienne.dev",
+		children: "Go to Website",
+	},
+};
