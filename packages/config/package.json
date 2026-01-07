@@ -1,5 +1,6 @@
 {
 	"name": "@packages/config",
+	"version": "0.0.0",
 	"type": "module",
 	"private": true,
 	"license": "UNLICENSED",
@@ -9,7 +10,7 @@
 		"./unocss": "./src/unocss/index.ts"
 	},
 	"devDependencies": {
-		"@julr/tooling-configs": "^4.0.0",
+		"@julr/tooling-configs": "^5.0.0",
 		"eslint": "catalog:",
 		"prettier": "catalog:"
 	},

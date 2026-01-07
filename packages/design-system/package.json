@@ -1,5 +1,6 @@
 {
 	"name": "@packages/design-system",
+	"version": "0.0.0",
 	"type": "module",
 	"private": true,
 	"license": "UNLICENSED",
@@ -42,7 +43,8 @@
 		"vitest": "^4.0.16"
 	},
 	"exports": {
-		"./tokens": "./src/tokens.ts"
+		"./tokens": "./src/tokens.ts",
+		"./button": "./src/atoms/button/button.tsx"
 	},
 	"eslintConfig": {
 		"extends": [
