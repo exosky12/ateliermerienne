@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import React from "react";
 
 const button = tv({
-	base: "items-center cursor-pointer text-lg font-normal",
+	base: "items-center cursor-pointer font-normal",
 	variants: {
 		size: {
 			sm: "py-1 px-4",
@@ -13,7 +13,7 @@ const button = tv({
 
 		outlined: {
 			true: "bg-white border uppercase hover:bg-dark hover:text-white transition-colors duration-200",
-			false: "border-none hover:underline",
+			false: "border-none hover:underline font-light",
 		},
 
 		disabled: {
@@ -35,7 +35,7 @@ export interface ButtonProps
 		ButtonVariants,
 		Omit<
 			React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-			"color"
+			"size"
 		> {
 	href?: string;
 }
