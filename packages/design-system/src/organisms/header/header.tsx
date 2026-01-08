@@ -1,30 +1,47 @@
 import { Icon } from "@packages/design-system/icon";
 import { Link } from "@tanstack/react-router";
 import { Select } from "@packages/design-system/select";
+import { useEffect, useState } from "react";
+import { Button } from "@packages/design-system/button";
 
 export const Header = () => {
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<header className="flex w-full justify-between mt-4 mx-9 items-center">
+		<header
+			className={`flex w-full fixed justify-between py-4 px-9 items-center font-light transition-colors duration-300 z-50 ${
+				isScrolled ? "bg-white text-black" : "bg-transparent text-white"
+			}`}
+		>
 			<nav>
 				<ul className="flex text-sm flew-row gap-5 uppercase">
-					<Link className="hover:underline" to="/">
+					<Button size="sm" outlined={false} href="/">
 						Nouveautés
-					</Link>
-					<Link className="hover:underline" to="/">
+					</Button>
+					<Button size="sm" outlined={false} href="/">
 						Les créations
-					</Link>
-					<Link className="hover:underline" to="/">
+					</Button>
+					<Button size="sm" outlined={false} href="/">
 						L'atelier
-					</Link>
-					<Link className="hover:underline" to="/">
+					</Button>
+					<Button size="sm" outlined={false} href="/">
 						Sur-mesure
-					</Link>
-					<Link className="hover:underline" to="/">
+					</Button>
+					<Button size="sm" outlined={false} href="/">
 						Conciergerie
-					</Link>
+					</Button>
 				</ul>
 			</nav>
-			<div className="flex gap-4">
+			<div className="flex gap-6 items-center">
 				<Select
 					selectItems={[
 						{
@@ -38,10 +55,31 @@ export const Header = () => {
 					]}
 					defaultSelected="fr"
 				/>
-				<div className="flex gap-2">
-					<Icon name="search" />
-					<Icon name="bag" />
-					<Icon name="account" />
+				<div className="flex gap-1">
+					<div className="h-8 w-8">
+						<Icon
+							width={24}
+							height={24}
+							className="cursor-pointer"
+							name="search"
+						/>
+					</div>
+					<div className="h-8 w-8">
+						<Icon
+							width={24}
+							height={24}
+							className="cursor-pointer"
+							name="bag"
+						/>
+					</div>
+					<div className="h-8 w-8">
+						<Icon
+							width={24}
+							height={24}
+							className="cursor-pointer"
+							name="account"
+						/>
+					</div>
 				</div>
 			</div>
 		</header>
