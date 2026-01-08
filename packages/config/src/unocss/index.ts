@@ -16,7 +16,16 @@ export const sharedConfig = defineConfig({
 		presetWebFonts({
 			provider: "bunny",
 			fonts: {
-				sans: ["Jost", "Inter"],
+				sans: [
+					{
+						name: "Jost",
+						weights: ["100", "200", "300", "400", "500", "600", "700", "800"],
+					},
+					{
+						name: "Inter",
+						weights: ["100", "200", "300", "400", "500", "600", "700", "800"],
+					},
+				],
 			},
 		}),
 	],
