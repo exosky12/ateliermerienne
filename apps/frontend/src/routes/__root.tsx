@@ -1,10 +1,8 @@
+import 'virtual:uno.css'
+import { Header } from '@packages/design-system/header'
+import { TanStackDevtools } from '@tanstack/react-devtools'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-
-import Header from '../components/Header'
-
-import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -20,15 +18,15 @@ export const Route = createRootRoute({
 				title: 'TanStack Start Starter',
 			},
 		],
-		links: [
-			{
-				rel: 'stylesheet',
-				href: appCss,
-			},
-		],
 	}),
 
 	shellComponent: RootDocument,
+	notFoundComponent: () => (
+		<div className="flex flex-col h-[50vh] items-center justify-center">
+			<h1 className="text-2xl font-bold">404 - Page Not Found</h1>
+			<p>Désolé, cette page n'existe pas.</p>
+		</div>
+	),
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -37,9 +35,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<head>
 				<HeadContent />
 			</head>
-			<body>
+			<body className="flex flex-col min-h-screen w-full">
 				<Header />
-				{children}
+				<main>{children}</main>
 				<TanStackDevtools
 					config={{
 						position: 'bottom-right',

@@ -1,15 +1,21 @@
 {
 	"name": "@packages/config",
+	"version": "0.0.0",
 	"type": "module",
 	"private": true,
 	"license": "UNLICENSED",
 	"exports": {
 		"./eslint": "./src/eslint/eslint.config.js",
-		"./prettier": "./src/prettier/index.js"
+		"./prettier": "./src/prettier/index.js",
+		"./unocss": "./src/unocss/index.ts"
 	},
 	"devDependencies": {
-		"@julr/tooling-configs": "^4.0.0",
-		"eslint": "^9.28.0",
-		"prettier": "^3.7.4"
+		"@julr/tooling-configs": "^5.0.0",
+		"eslint": "catalog:",
+		"prettier": "catalog:"
+	},
+	"dependencies": {
+		"@packages/design-system": "workspace:*",
+		"unocss": "catalog:"
 	}
 }

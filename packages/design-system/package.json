@@ -1,0 +1,66 @@
+{
+	"name": "@packages/design-system",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"license": "UNLICENSED",
+	"scripts": {
+		"dev": "storybook dev -p 6006",
+		"build": "vite build",
+		"build-storybook": "storybook build",
+		"lint": "eslint .",
+		"format": "prettier --write .",
+		"storybook": "storybook dev -p 6006"
+	},
+	"peerDependencies": {
+		"react": "catalog:",
+		"react-dom": "catalog:"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^4.1.3",
+		"@packages/config": "workspace:*",
+		"@storybook/addon-a11y": "^10.1.11",
+		"@storybook/addon-docs": "^10.1.11",
+		"@storybook/addon-onboarding": "^10.1.11",
+		"@storybook/addon-vitest": "^10.1.11",
+		"@storybook/react-vite": "^10.1.11",
+		"@tanstack/react-router": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"@vitejs/plugin-react": "catalog:",
+		"@vitest/browser-playwright": "^4.0.16",
+		"@vitest/coverage-v8": "^4.0.16",
+		"eslint": "catalog:",
+		"eslint-plugin-storybook": "^10.1.11",
+		"playwright": "^1.57.0",
+		"prettier": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"storybook": "^10.1.11",
+		"tailwindcss": "catalog:",
+		"typescript": "catalog:",
+		"unocss": "^66.5.12",
+		"@unpic/react": "catalog:",
+		"vite": "catalog:",
+		"vitest": "^4.0.16"
+	},
+	"exports": {
+		"./tokens": "./src/tokens.ts",
+		"./button": "./src/atoms/button/button.tsx",
+		"./icon": "./src/atoms/icon/icon.tsx",
+		"./header": "./src/organisms/header/header.tsx",
+		"./select": "./src/molecules/select/select.tsx",
+		"./landing_card": "./src/organisms/landing_card/landing_card.tsx"
+	},
+	"eslintConfig": {
+		"extends": [
+			"plugin:storybook/recommended"
+		]
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.0.0",
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^3.4.0",
+		"tailwind-variants": "^3.2.2"
+	}
+}

@@ -43,3 +43,6 @@ coverage
 # Autres
 .vercel
 tmp/
+
+*storybook.log
+storybook-static
