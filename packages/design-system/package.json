@@ -40,6 +40,7 @@
 		"tailwindcss": "catalog:",
 		"typescript": "catalog:",
 		"unocss": "^66.5.12",
+		"@unpic/react": "catalog:",
 		"vite": "catalog:",
 		"vitest": "^4.0.16"
 	},
@@ -48,7 +49,8 @@
 		"./button": "./src/atoms/button/button.tsx",
 		"./icon": "./src/atoms/icon/icon.tsx",
 		"./header": "./src/organisms/header/header.tsx",
-		"./select": "./src/molecules/select/select.tsx"
+		"./select": "./src/molecules/select/select.tsx",
+		"./landing_card": "./src/organisms/landing_card/landing_card.tsx"
 	},
 	"eslintConfig": {
 		"extends": [
