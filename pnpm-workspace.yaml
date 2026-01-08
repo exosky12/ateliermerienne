@@ -15,3 +15,4 @@ catalog:
   "@types/react-dom": ^19.2.0
   "@types/node": ^22.10.2
   "unocss": "^66.5.12"
+  "@tanstack/react-router": "^1.132.0"
