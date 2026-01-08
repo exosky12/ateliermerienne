@@ -24,6 +24,7 @@
 		"@storybook/addon-onboarding": "^10.1.11",
 		"@storybook/addon-vitest": "^10.1.11",
 		"@storybook/react-vite": "^10.1.11",
+		"@tanstack/react-router": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@vitejs/plugin-react": "catalog:",
@@ -44,7 +45,10 @@
 	},
 	"exports": {
 		"./tokens": "./src/tokens.ts",
-		"./button": "./src/atoms/button/button.tsx"
+		"./button": "./src/atoms/button/button.tsx",
+		"./icon": "./src/atoms/icon/icon.tsx",
+		"./header": "./src/organisms/header/header.tsx",
+		"./select": "./src/molecules/select/select.tsx"
 	},
 	"eslintConfig": {
 		"extends": [
