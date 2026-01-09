@@ -1,5 +1,5 @@
-import { Image } from "@unpic/react";
 import { Button } from "@packages/design-system/button";
+import { Image } from "@unpic/react";
 
 interface LandingCardProps {
 	position: "topleft" | "topright" | "bottomleft" | "bottomright";
@@ -17,7 +17,7 @@ export const LandingCard = ({
 	textColor = "white",
 }: LandingCardProps) => {
 	return (
-		<div className="w-2/4 h-auto relative">
+		<div className="h-auto w-2/4 relative">
 			<Button
 				size="sm"
 				outlined={false}
@@ -30,7 +30,7 @@ export const LandingCard = ({
 				width={1920}
 				height={1080}
 				src={imagePath}
-				className="w-full h-auto"
+				className="h-auto w-full"
 			/>
 		</div>
 	);

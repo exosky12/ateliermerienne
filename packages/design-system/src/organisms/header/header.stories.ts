@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Header } from "./header";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	component: Header,

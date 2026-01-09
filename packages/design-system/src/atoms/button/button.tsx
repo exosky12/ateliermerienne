@@ -1,6 +1,6 @@
 import { Button as BaseButton } from "@base-ui/react/button";
-import { tv, type VariantProps } from "tailwind-variants";
 import React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
 	base: "items-center cursor-pointer font-normal",
