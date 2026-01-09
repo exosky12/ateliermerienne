@@ -31,7 +31,7 @@ export const Route = createRootRoute({
 		</div>
 	),
 })
-
+  
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
 		<QueryClientProvider client={queryClient}>
