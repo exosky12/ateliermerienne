@@ -227,7 +227,7 @@ importers:
         specifier: ^4.2.0
         version: 4.4.0
       '@packages/config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/config
       '@swc/core':
         specifier: 1.11.24
