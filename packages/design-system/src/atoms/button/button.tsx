@@ -46,6 +46,7 @@ export const Button = React.forwardRef<
 >(({ size, outlined, disabled, className, href, children, ...props }, ref) => {
 	return (
 		<BaseButton
+			nativeButton={href ? false : true}
 			ref={ref}
 			className={button({ size, outlined, disabled, className })}
 			disabled={disabled}
