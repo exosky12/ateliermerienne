@@ -1,6 +1,6 @@
 import { Button as BaseButton } from "@base-ui/react/button";
-import { tv, type VariantProps } from "tailwind-variants";
 import React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
 	base: "items-center cursor-pointer font-normal",
@@ -46,6 +46,7 @@ export const Button = React.forwardRef<
 >(({ size, outlined, disabled, className, href, children, ...props }, ref) => {
 	return (
 		<BaseButton
+			nativeButton={href ? false : true}
 			ref={ref}
 			className={button({ size, outlined, disabled, className })}
 			disabled={disabled}

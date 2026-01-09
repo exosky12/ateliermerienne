@@ -1,8 +1,7 @@
+import { Button } from "@packages/design-system/button";
 import { Icon } from "@packages/design-system/icon";
-import { Link } from "@tanstack/react-router";
 import { Select } from "@packages/design-system/select";
 import { useEffect, useState } from "react";
-import { Button } from "@packages/design-system/button";
 
 export const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -18,12 +17,12 @@ export const Header = () => {
 
 	return (
 		<header
-			className={`flex w-full fixed justify-between py-4 px-9 items-center font-light transition-colors duration-300 z-50 ${
+			className={`font-light px-9 py-4 flex w-full transition-colors duration-300 items-center justify-between fixed z-50 ${
 				isScrolled ? "bg-white text-black" : "bg-transparent text-white"
 			}`}
 		>
 			<nav>
-				<ul className="flex text-sm flew-row gap-5 uppercase">
+				<ul className="flew-row text-sm flex gap-5 uppercase">
 					<Button size="sm" outlined={false} href="/">
 						Nouveautés
 					</Button>

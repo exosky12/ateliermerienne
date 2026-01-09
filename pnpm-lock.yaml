@@ -86,6 +86,9 @@ importers:
       '@tanstack/react-devtools':
         specifier: ^0.7.0
         version: 0.7.11(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(csstype@3.2.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(solid-js@1.9.10)
+      '@tanstack/react-query':
+        specifier: ^5.90.16
+        version: 5.90.16(react@19.2.3)
       '@tanstack/react-router':
         specifier: 'catalog:'
         version: 1.144.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -224,7 +227,7 @@ importers:
         specifier: ^4.2.0
         version: 4.4.0
       '@packages/config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/config
       '@swc/core':
         specifier: 1.11.24

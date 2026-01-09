@@ -7,7 +7,20 @@
 import type { MakeTuyauRequest, MakeTuyauResponse } from '@tuyau/utils/types'
 import type { InferInput } from '@vinejs/vine/types'
 
-export interface ApiDefinition {}
+type ConnexionGetHead = {
+	request: unknown
+	response: MakeTuyauResponse<
+		import('../app/controllers/auth_controller.ts').default['store'],
+		false
+	>
+}
+export interface ApiDefinition {
+	connexion: {
+		$url: {}
+		$get: ConnexionGetHead
+		$head: ConnexionGetHead
+	}
+}
 const routes = [] as const
 export const api = {
 	routes,

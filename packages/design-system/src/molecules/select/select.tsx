@@ -24,7 +24,7 @@ export const Select = ({
 }: SelectProps) => {
 	return (
 		<BaseSelect.Root items={selectItems} defaultValue={defaultSelected}>
-			<BaseSelect.Trigger className="group flex items-center gap-1.5 cursor-pointer text-sm">
+			<BaseSelect.Trigger className="group text-sm flex gap-1.5 cursor-pointer items-center">
 				<BaseSelect.Value />
 				<BaseSelect.Icon>
 					<Icon
@@ -43,12 +43,12 @@ export const Select = ({
 					align="start"
 					alignItemWithTrigger={false}
 				>
-					<BaseSelect.Popup className="origin-[var(--transform-origin)] border bg-white overflow-hidden py-1 transition-[transform,scale,opacity] duration-200 ease-out data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300 min-w-[120px]">
+					<BaseSelect.Popup className="transition-[transform,scale,opacity] py-1 border bg-white min-w-[120px] origin-[var(--transform-origin)] duration-200 ease-out overflow-hidden dark:outline-gray-300 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 dark:shadow-none data-[ending-style]:scale-90 data-[starting-style]:scale-90 dark:-outline-offset-1">
 						{selectItems.map((item) => (
 							<BaseSelect.Item
 								key={item.value}
 								value={item.value}
-								className="flex cursor-pointer hover:underline py-2 pr-4 pl-4 text-sm outline-none select-none justify-between items-center"
+								className="text-sm py-2 pl-4 pr-4 outline-none flex cursor-pointer select-none items-center justify-between hover:underline"
 							>
 								<BaseSelect.ItemText>{item.label}</BaseSelect.ItemText>
 								<BaseSelect.ItemIndicator>

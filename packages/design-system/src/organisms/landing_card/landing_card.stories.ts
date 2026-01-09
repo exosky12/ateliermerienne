@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LandingCard } from "./landing_card";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	component: LandingCard,
