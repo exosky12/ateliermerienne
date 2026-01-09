@@ -1,8 +1,11 @@
 import 'virtual:uno.css'
 import { Header } from '@packages/design-system/header'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+
+const queryClient = new QueryClient()
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -31,26 +34,28 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
-			<head>
-				<HeadContent />
-			</head>
-			<body className="flex flex-col min-h-screen w-full">
-				<Header />
-				<main>{children}</main>
-				<TanStackDevtools
-					config={{
-						position: 'bottom-right',
-					}}
-					plugins={[
-						{
-							name: 'Tanstack Router',
-							render: <TanStackRouterDevtoolsPanel />,
-						},
-					]}
-				/>
-				<Scripts />
-			</body>
-		</html>
+		<QueryClientProvider client={queryClient}>
+			<html lang="en">
+				<head>
+					<HeadContent />
+				</head>
+				<body className="flex flex-col min-h-screen w-full">
+					<Header />
+					<main>{children}</main>
+					<TanStackDevtools
+						config={{
+							position: 'bottom-right',
+						}}
+						plugins={[
+							{
+								name: 'Tanstack Router',
+								render: <TanStackRouterDevtoolsPanel />,
+							},
+						]}
+					/>
+					<Scripts />
+				</body>
+			</html>
+		</QueryClientProvider>
 	)
 }
