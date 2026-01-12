@@ -4,7 +4,9 @@ import {
 	presetAttributify,
 	presetWebFonts,
 } from "unocss";
-import { colors } from "@packages/design-system/tokens";
+import { colors } from "./tokens";
+
+export { colors };
 
 export const sharedConfig = defineConfig({
 	theme: {
