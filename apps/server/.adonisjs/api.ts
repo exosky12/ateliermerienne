@@ -7,18 +7,51 @@
 import type { MakeTuyauRequest, MakeTuyauResponse } from '@tuyau/utils/types'
 import type { InferInput } from '@vinejs/vine/types'
 
-type ConnexionGetHead = {
+type ConnexionPost = {
 	request: unknown
 	response: MakeTuyauResponse<
-		import('../app/controllers/auth_controller.ts').default['store'],
+		import('../app/controllers/auth_controller.ts').default['login'],
+		false
+	>
+}
+type InscriptionPost = {
+	request: unknown
+	response: MakeTuyauResponse<
+		import('../app/controllers/auth_controller.ts').default['register'],
+		false
+	>
+}
+type IsConnectedGetHead = {
+	request: unknown
+	response: MakeTuyauResponse<
+		import('../app/controllers/auth_controller.ts').default['isConnected'],
+		false
+	>
+}
+type LogoutPost = {
+	request: unknown
+	response: MakeTuyauResponse<
+		import('../app/controllers/auth_controller.ts').default['logout'],
 		false
 	>
 }
 export interface ApiDefinition {
 	connexion: {
 		$url: {}
-		$get: ConnexionGetHead
-		$head: ConnexionGetHead
+		$post: ConnexionPost
+	}
+	inscription: {
+		$url: {}
+		$post: InscriptionPost
+	}
+	isConnected: {
+		$url: {}
+		$get: IsConnectedGetHead
+		$head: IsConnectedGetHead
+	}
+	logout: {
+		$url: {}
+		$post: LogoutPost
 	}
 }
 const routes = [] as const
