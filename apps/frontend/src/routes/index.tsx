@@ -7,9 +7,8 @@ import cardImage2 from '../../public/landing_card2.png'
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
-	console.log(cardImage1)
 	return (
-		<>
+		<div className="h-full w-full -mt-22">
 			<Image
 				width={1920}
 				height={1080}
@@ -17,10 +16,10 @@ function App() {
 				alt=""
 				src="landing_page_image.png"
 			/>
-			<div className="flex w-full">
+			<div className="mt-2 flex gap-2 w-full">
 				<LandingCard text="Nouveautés" link="#" position="bottomleft" imagePath={cardImage1} />
 				<LandingCard text="Sur-Mesure" position="bottomright" imagePath={cardImage2} />
 			</div>
-		</>
+		</div>
 	)
 }
