@@ -15,7 +15,6 @@
 		"prettier": "catalog:"
 	},
 	"dependencies": {
-		"@packages/design-system": "workspace:*",
 		"unocss": "catalog:"
 	}
 }
