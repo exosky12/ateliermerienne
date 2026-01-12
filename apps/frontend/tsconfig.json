@@ -12,6 +12,8 @@
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": false,
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
 		"noEmit": true,
 
 		/* Linting */
