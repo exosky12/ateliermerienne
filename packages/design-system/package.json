@@ -45,12 +45,13 @@
 		"@packages/config": "workspace:*"
 	},
 	"exports": {
-		"./tokens": "./src/tokens.ts",
 		"./button": "./src/atoms/button/button.tsx",
 		"./icon": "./src/atoms/icon/icon.tsx",
 		"./header": "./src/organisms/header/header.tsx",
 		"./select": "./src/molecules/select/select.tsx",
-		"./landing_card": "./src/organisms/landing_card/landing_card.tsx"
+		"./landing_card": "./src/organisms/landing_card/landing_card.tsx",
+		"./field": "./src/molecules/field/field.tsx",
+		"./form": "./src/organisms/form/form.tsx"
 	},
 	"eslintConfig": {
 		"extends": [

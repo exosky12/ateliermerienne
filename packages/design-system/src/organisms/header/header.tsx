@@ -3,7 +3,14 @@ import { Icon } from "@packages/design-system/icon";
 import { Select } from "@packages/design-system/select";
 import { useEffect, useState } from "react";
 
-export const Header = () => {
+interface HeaderProps {
+	isConnected: boolean;
+}
+
+export const Header = ({
+	isConnected,
+	pathname = window.location.pathname,
+}: HeaderProps & { pathname?: string }) => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {
@@ -11,14 +18,21 @@ export const Header = () => {
 			setIsScrolled(window.scrollY > 50);
 		};
 
+		handleScroll();
+
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
+	const isHome = pathname === "/";
+	const showWhiteBackground = !isHome || isScrolled;
+
 	return (
 		<header
-			className={`font-light px-9 py-4 flex w-full transition-colors duration-300 items-center justify-between fixed z-50 ${
-				isScrolled ? "bg-white text-black" : "bg-transparent text-white"
+			className={`font-light px-9 py-4 transition-colors duration-300 flex w-full items-center justify-between fixed z-50 ${
+				showWhiteBackground
+					? "bg-white text-black"
+					: "bg-transparent text-white"
 			}`}
 		>
 			<nav>
@@ -54,31 +68,32 @@ export const Header = () => {
 					]}
 					defaultSelected="fr"
 				/>
-				<div className="flex gap-1">
-					<div className="h-8 w-8">
-						<Icon
-							width={24}
-							height={24}
-							className="cursor-pointer"
-							name="search"
-						/>
-					</div>
-					<div className="h-8 w-8">
-						<Icon
-							width={24}
-							height={24}
-							className="cursor-pointer"
-							name="bag"
-						/>
-					</div>
-					<div className="h-8 w-8">
-						<Icon
-							width={24}
-							height={24}
-							className="cursor-pointer"
-							name="account"
-						/>
-					</div>
+				<h2>{isConnected ? "Mon compte" : "Connexion"}</h2>
+				<div className="flex gap-1 items-center">
+					<Button
+						className="w-8 h-8 flex items-center justify-center px-0"
+						size="sm"
+						outlined={false}
+						href="/search"
+					>
+						<Icon width={24} height={24} name="search" />
+					</Button>
+					<Button
+						className="w-8 h-8 flex items-center justify-center px-0"
+						size="sm"
+						outlined={false}
+						href="/panier"
+					>
+						<Icon width={24} height={24} name="bag" />
+					</Button>
+					<Button
+						className="w-8 h-8 flex items-center justify-center px-0"
+						size="sm"
+						outlined={false}
+						href={isConnected ? "/profile" : "/connexion"}
+					>
+						<Icon width={24} height={24} name="account" />
+					</Button>
 				</div>
 			</div>
 		</header>
