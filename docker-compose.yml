@@ -1,22 +1,24 @@
 services:
   pgsql:
-    image: "postgres:15"
+    image: "postgres:15-alpine"
+    container_name: ateliermerienne_db
     ports:
       - "${DB_PORT:-5432}:5432"
     environment:
-      POSTGRES_DB: "${DB_DATABASE}"
-      POSTGRES_USER: "${DB_USER}"
-      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_DATABASE:-ateliermerienne}"
+      POSTGRES_USER: "${DB_USER:-root}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-root}"
     volumes:
-      - "postgres_data:/var/lib/postgresql/data"
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test:
-        ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USER}"]
-      retries: 3
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE:-ateliermerienne}", "-U", "${DB_USER:-root}"]
+      interval: 5s
       timeout: 5s
+      retries: 5
 
   pgadmin:
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4
+    container_name: ateliermerienne_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -24,61 +26,7 @@ services:
       - "5050:80"
     depends_on:
       - pgsql
-    volumes:
-      - pgadmin_data:/var/lib/pgadmin
 
-  server:
-    build:
-      context: .
-      dockerfile: apps/server/Dockerfile.dev
-    ports:
-      - "3333:3333"
-    environment:
-      - DB_HOST=pgsql
-      - DB_PORT=5432
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_DATABASE=${DB_DATABASE}
-      - APP_KEY=${APP_KEY}
-      - HOST=0.0.0.0
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/apps/server/node_modules
-    depends_on:
-      pgsql:
-        condition: service_healthy
-
-  frontend:
-    build:
-      context: .
-      dockerfile: apps/frontend/Dockerfile.dev
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/apps/frontend/node_modules
-    depends_on:
-      - server
-
-  storybook:
-    build:
-      context: .
-      dockerfile: apps/frontend/Dockerfile.dev
-    ports:
-      - "6006:6006"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/packages/design-system/node_modules
-    command:
-      [
-        "sh",
-        "-c",
-        "pnpm config set ignore-scripts false && pnpm install && pnpm --filter @packages/design-system storybook --ci",
-      ]
 
 volumes:
   postgres_data:
-  pgadmin_data:
