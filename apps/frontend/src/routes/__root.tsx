@@ -1,9 +1,10 @@
-import 'virtual:uno.css'
-import { Header } from '@packages/design-system/header'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import { HeadContent, Outlet, Scripts, createRootRoute, useLocation } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { tuyau } from '@/config/tuyau'
+import { Header } from '@packages/design-system/header'
+import 'virtual:uno.css'
 
 const queryClient = new QueryClient()
 
@@ -23,7 +24,7 @@ export const Route = createRootRoute({
 		],
 	}),
 
-	shellComponent: RootDocument,
+	component: Root,
 	notFoundComponent: () => (
 		<div className="flex flex-col h-[50vh] items-center justify-center">
 			<h1 className="text-2xl font-bold">404 - Page Not Found</h1>
@@ -31,31 +32,47 @@ export const Route = createRootRoute({
 		</div>
 	),
 })
-  
-function RootDocument({ children }: { children: React.ReactNode }) {
+
+function Root() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<html lang="en">
-				<head>
-					<HeadContent />
-				</head>
-				<body className="flex flex-col min-h-screen w-full">
-					<Header />
-					<main>{children}</main>
-					<TanStackDevtools
-						config={{
-							position: 'bottom-right',
-						}}
-						plugins={[
-							{
-								name: 'Tanstack Router',
-								render: <TanStackRouterDevtoolsPanel />,
-							},
-						]}
-					/>
-					<Scripts />
-				</body>
-			</html>
+			<RootContent />
 		</QueryClientProvider>
+	)
+}
+
+function RootContent() {
+	const location = useLocation()
+	const { data } = useQuery({
+		queryKey: ['isConnected'],
+		queryFn: () => tuyau.isConnected.$get(),
+	})
+
+	const isConnected = data?.data?.isConnected
+
+	return (
+		<html lang="fr">
+			<head>
+				<HeadContent />
+			</head>
+			<body className="flex flex-col min-h-screen w-full">
+				<Header isConnected={isConnected ?? false} pathname={location.pathname} />
+				<main className="mt-22 mx-auto px-5">
+					<Outlet />
+				</main>
+				<TanStackDevtools
+					config={{
+						position: 'bottom-right',
+					}}
+					plugins={[
+						{
+							name: 'Tanstack Router',
+							render: <TanStackRouterDevtoolsPanel />,
+						},
+					]}
+				/>
+				<Scripts />
+			</body>
+		</html>
 	)
 }
