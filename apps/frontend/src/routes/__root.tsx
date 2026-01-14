@@ -1,10 +1,12 @@
 import 'virtual:uno.css'
-import { tuyau } from '@/config/tuyau'
+
 import { Header } from '@packages/design-system/header'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { HeadContent, Outlet, Scripts, createRootRoute, useLocation } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+
+import { tuyau } from '@/config/tuyau'
 
 const queryClient = new QueryClient()
 
@@ -50,14 +52,16 @@ function RootContent() {
 
 	const isConnected = data?.data?.isConnected
 
+	console.log(isConnected)
+
 	return (
 		<html lang="fr">
 			<head>
 				<HeadContent />
 			</head>
-			<body className="flex flex-col min-h-screen w-full">
+			<body className="flex flex-col min-h-screen w-screen">
 				<Header isConnected={isConnected ?? false} pathname={location.pathname} />
-				<main className="mx-auto mt-22 px-5">
+				<main className="mx-auto mt-22 flex flex-col w-full items-center">
 					<Outlet />
 				</main>
 				<TanStackDevtools

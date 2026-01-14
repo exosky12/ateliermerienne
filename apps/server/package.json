@@ -14,15 +14,18 @@
 		"format": "prettier --write ."
 	},
 	"imports": {
-		"#controllers/*": "./app/controllers/*.js",
-		"#exceptions/*": "./app/exceptions/*.js",
-		"#models/*": "./app/models/*.js",
+		"#core/*": "./app/core/*.js",
+		"#features/*": "./app/features/*.js",
+		"#infrastructure/*": "./app/infrastructure/*.js",
+		"#controllers/*": "./app/infrastructure/controllers/*.js",
+		"#exceptions/*": "./app/infrastructure/exceptions/*.js",
+		"#models/*": "./app/infrastructure/models/*.js",
 		"#mails/*": "./app/mails/*.js",
 		"#services/*": "./app/services/*.js",
 		"#listeners/*": "./app/listeners/*.js",
 		"#events/*": "./app/events/*.js",
-		"#middleware/*": "./app/middleware/*.js",
-		"#validators/*": "./app/validators/*.js",
+		"#middleware/*": "./app/infrastructure/middleware/*.js",
+		"#validators/*": "./app/infrastructure/validators/*.js",
 		"#providers/*": "./providers/*.js",
 		"#policies/*": "./app/policies/*.js",
 		"#abilities/*": "./app/abilities/*.js",
@@ -67,8 +70,8 @@
 	},
 	"hotHook": {
 		"boundaries": [
-			"./app/controllers/**/*.ts",
-			"./app/middleware/*.ts"
+			"./app/infrastructure/controllers/**/*.ts",
+			"./app/infrastructure/middleware/*.ts"
 		]
 	}
 }
