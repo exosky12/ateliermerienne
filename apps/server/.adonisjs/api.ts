@@ -8,30 +8,38 @@ import type { MakeTuyauRequest, MakeTuyauResponse } from '@tuyau/utils/types'
 import type { InferInput } from '@vinejs/vine/types'
 
 type ConnexionPost = {
-	request: unknown
+	request: MakeTuyauRequest<
+		InferInput<
+			(typeof import('../app/infrastructure/validators/auth_validator.ts'))['loginValidator']
+		>
+	>
 	response: MakeTuyauResponse<
-		import('../app/controllers/auth_controller.ts').default['login'],
-		false
+		import('../app/infrastructure/controllers/auth_controller.ts').default['login'],
+		true
 	>
 }
 type InscriptionPost = {
-	request: unknown
+	request: MakeTuyauRequest<
+		InferInput<
+			(typeof import('../app/infrastructure/validators/auth_validator.ts'))['registerValidator']
+		>
+	>
 	response: MakeTuyauResponse<
-		import('../app/controllers/auth_controller.ts').default['register'],
-		false
+		import('../app/infrastructure/controllers/auth_controller.ts').default['register'],
+		true
 	>
 }
 type IsConnectedGetHead = {
 	request: unknown
 	response: MakeTuyauResponse<
-		import('../app/controllers/auth_controller.ts').default['isConnected'],
+		import('../app/infrastructure/controllers/auth_controller.ts').default['isConnected'],
 		false
 	>
 }
 type LogoutPost = {
 	request: unknown
 	response: MakeTuyauResponse<
-		import('../app/controllers/auth_controller.ts').default['logout'],
+		import('../app/infrastructure/controllers/auth_controller.ts').default['logout'],
 		false
 	>
 }

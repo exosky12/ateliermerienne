@@ -1,7 +1,8 @@
-import { tuyau } from '@/config/tuyau'
 import { Field } from '@packages/design-system/field'
 import { useQueryClient } from '@tanstack/react-query'
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
+
+import { tuyau } from '@/config/tuyau'
 import { DynamicForm } from '@/components/DynamicForm'
 
 export const Route = createFileRoute('/connexion')({
@@ -9,7 +10,6 @@ export const Route = createFileRoute('/connexion')({
 })
 
 function RouteComponent() {
-	const navigate = useNavigate()
 	const queryClient = useQueryClient()
 
 	return (
@@ -19,13 +19,13 @@ function RouteComponent() {
 				password: '',
 			}}
 			mutationFn={async (value) => {
-				const { data } = await tuyau.connexion.$post(value)
-				return data
+				const { data, response } = await tuyau.connexion.$post(value)
+				console.log(response)
+				return { data }
 			}}
 			onSuccess={async (data) => {
 				console.log('Success:', data)
 				await queryClient.invalidateQueries({ queryKey: ['isConnected'] })
-				await navigate({ to: '/' })
 			}}
 			buttonLabel="Se connecter"
 		>
