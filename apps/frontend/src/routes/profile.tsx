@@ -1,7 +1,8 @@
-import { tuyau } from '@/config/tuyau'
 import { Form } from '@packages/design-system/form'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+
+import { tuyau } from '@/lib/tuyau.ts'
 
 export const Route = createFileRoute('/profile')({
 	component: RouteComponent,
@@ -13,21 +14,24 @@ function RouteComponent() {
 
 	const mutation = useMutation({
 		mutationFn: async () => {
-			return await tuyau.logout.$post()
+			return tuyau.sign_out.$post()
 		},
 		onSuccess: async () => {
-			await queryClient.invalidateQueries({ queryKey: ['isConnected'] })
+			await queryClient.invalidateQueries({ queryKey: ['user'] })
 			await navigate({ to: '/' })
 		},
 	})
 
 	return (
-		<Form
-			onSubmit={(e) => {
-				e.preventDefault()
-				mutation.mutate()
-			}}
-			buttonLabel="Déconnexion"
-		/>
+		<>
+			<Form
+				onSubmit={(e) => {
+					e.preventDefault()
+					mutation.mutate()
+				}}
+				buttonLabel="Déconnexion"
+			/>
+			<h2>{}</h2>
+		</>
 	)
 }
