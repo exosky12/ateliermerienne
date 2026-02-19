@@ -9,7 +9,7 @@ interface FormProps {
 
 export const Form = ({ children, onSubmit, buttonLabel }: FormProps) => {
 	return (
-		<form onSubmit={onSubmit} className="max-w-96 w-full">
+		<form onSubmit={onSubmit} className="mx-auto p-4 max-w-2xl w-full">
 			<div className="flex flex-col gap-4">
 				<div className="flex-row-span-2 flex-wrap flex gap-1">{children}</div>
 

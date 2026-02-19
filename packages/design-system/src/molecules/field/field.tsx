@@ -23,7 +23,7 @@ export const Field = ({
 			<BaseField.Control
 				required
 				placeholder={placeholder}
-				className="text-base text-black pl-3.5 border h-10 w-full focus:outline-2 focus:outline-blue-800 focus:outline focus:-outline-offset-1"
+				className="text-base text-black pl-3.5 border h-10 w-full focus:outline-2 focus:outline focus:-outline-offset-1"
 				{...props}
 			/>
 			<BaseField.Error className="text-sm text-red-800" match="valueMissing">
