@@ -12,6 +12,7 @@
 			"#models/*": ["./app/infrastructure/models/*"],
 			"#mails/*": ["./app/mails/*"],
 			"#services/*": ["./app/services/*"],
+			"#shared/*": ["./app/shared/*"],
 			"#listeners/*": ["./app/listeners/*"],
 			"#events/*": ["./app/events/*"],
 			"#middleware/*": ["./app/infrastructure/middleware/*"],
