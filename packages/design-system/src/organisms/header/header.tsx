@@ -1,7 +1,7 @@
-import { Button } from "@packages/design-system/button";
-import { Icon } from "@packages/design-system/icon";
-import { Select } from "@packages/design-system/select";
 import { useEffect, useState } from "react";
+import { Icon } from "@packages/design-system/icon";
+import { Button } from "@packages/design-system/button";
+import { Select } from "@packages/design-system/select";
 
 interface HeaderProps {
 	isConnected: boolean;
@@ -29,7 +29,7 @@ export const Header = ({
 
 	return (
 		<header
-			className={`font-light px-9 py-4 transition-colors duration-300 flex w-full items-center justify-between fixed z-50 ${
+			className={`font-light px-9 py-4 flex w-full transition-colors duration-300 items-center justify-between fixed z-50 ${
 				showWhiteBackground
 					? "bg-white text-black"
 					: "bg-transparent text-white"
@@ -68,10 +68,9 @@ export const Header = ({
 					]}
 					defaultSelected="fr"
 				/>
-				<h2>{isConnected ? "Mon compte" : "Connexion"}</h2>
 				<div className="flex gap-1 items-center">
 					<Button
-						className="w-8 h-8 flex items-center justify-center px-0"
+						className="px-0 flex h-8 w-8 items-center justify-center"
 						size="sm"
 						outlined={false}
 						href="/search"
@@ -79,7 +78,7 @@ export const Header = ({
 						<Icon width={24} height={24} name="search" />
 					</Button>
 					<Button
-						className="w-8 h-8 flex items-center justify-center px-0"
+						className="px-0 flex h-8 w-8 items-center justify-center"
 						size="sm"
 						outlined={false}
 						href="/panier"
@@ -87,7 +86,7 @@ export const Header = ({
 						<Icon width={24} height={24} name="bag" />
 					</Button>
 					<Button
-						className="w-8 h-8 flex items-center justify-center px-0"
+						className="px-0 flex h-8 w-8 items-center justify-center"
 						size="sm"
 						outlined={false}
 						href={isConnected ? "/profile" : "/connexion"}

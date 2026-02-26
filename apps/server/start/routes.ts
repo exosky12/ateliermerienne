@@ -7,11 +7,4 @@
 |
 */
 
-import router from '@adonisjs/core/services/router'
-
-const AuthController = () => import('#infrastructure/controllers/auth_controller')
-
-router.post('connexion', [AuthController, 'login'])
-router.post('inscription', [AuthController, 'register'])
-router.get('isConnected', [AuthController, 'isConnected'])
-router.post('logout', [AuthController, 'logout'])
+import '#identity/routes'

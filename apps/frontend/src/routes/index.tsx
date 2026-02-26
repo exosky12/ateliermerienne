@@ -1,12 +1,23 @@
-import { LandingCard } from '@packages/design-system/landing_card'
-import { createFileRoute } from '@tanstack/react-router'
 import { Image } from '@unpic/react'
+import { createFileRoute } from '@tanstack/react-router'
+import { LandingCard } from '@packages/design-system/landing_card'
+
+import { useUserSuspense } from '@/lib/use_user.ts'
 import cardImage1 from '../../public/landing_card1.png'
 import cardImage2 from '../../public/landing_card2.png'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
+	const { data: user } = useUserSuspense()
+
+	if (!user) {
+		console.log('User is not connected')
+	} else {
+		console.log('User is connected')
+	}
+
+	console.log({ user })
 	return (
 		<div className="h-full w-full -mt-22">
 			<Image
