@@ -1,5 +1,6 @@
-import { Header } from "./header";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { Header } from "./header";
 
 const meta = {
 	component: Header,
@@ -10,4 +11,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Base: Story = {};
+export const Base: Story = {
+	args: {
+		isConnected: true,
+		pathname: "/",
+	},
+};

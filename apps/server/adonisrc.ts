@@ -1,6 +1,41 @@
+import { indexEntities } from '@adonisjs/core'
 import { defineConfig } from '@adonisjs/core/app'
+import { generateRegistry } from '@tuyau/core/hooks'
 
 export default defineConfig({
+	hooks: {
+		init: [
+			generateRegistry(),
+			indexEntities({
+				controllers: {
+					enabled: true,
+					source: './app',
+					glob: ['**/controllers/**/*.ts'],
+					importAlias: '#app',
+				},
+				transformers: {
+					enabled: true,
+					withSharedProps: true,
+					source: './app',
+					glob: ['**/transformers/**/*.ts'],
+					inertiaMiddlewareImportPath: '#core/middleware/inertia_middleware',
+					importAlias: '#app',
+				},
+				events: {
+					enabled: true,
+					source: './app',
+					glob: ['**/events/**/*.ts'],
+					importAlias: '#app',
+				},
+				listeners: {
+					enabled: true,
+					source: './app',
+					glob: ['**/listeners/**/*.ts'],
+					importAlias: '#app',
+				},
+			}),
+		],
+	},
 	/*
 |--------------------------------------------------------------------------
 | Experimental flags
@@ -53,9 +88,6 @@ export default defineConfig({
 		() => import('@adonisjs/lucid/database_provider'),
 		() => import('@adonisjs/session/session_provider'),
 		() => import('@adonisjs/auth/auth_provider'),
-		() => import('@tuyau/core/tuyau_provider'),
-		() => import('#providers/repository_provider'),
-		() => import('#providers/validation_provider'),
 	],
 
 	/*
@@ -80,12 +112,12 @@ export default defineConfig({
 	tests: {
 		suites: [
 			{
-				files: ['tests/unit/**/*.spec(.ts|.js)'],
+				files: ['tests/unit/**/*.spec.{ts,js}'],
 				name: 'unit',
 				timeout: 2000,
 			},
 			{
-				files: ['tests/functional/**/*.spec(.ts|.js)'],
+				files: ['tests/functional/**/*.spec.{ts,js}'],
 				name: 'functional',
 				timeout: 30_000,
 			},

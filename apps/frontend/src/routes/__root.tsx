@@ -2,11 +2,11 @@ import 'virtual:uno.css'
 
 import { Header } from '@packages/design-system/header'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { HeadContent, Outlet, Scripts, createRootRoute, useLocation } from '@tanstack/react-router'
 
-import { tuyau } from '@/config/tuyau'
+import { useUserSuspense } from '@/lib/use_user.ts'
 
 const queryClient = new QueryClient()
 
@@ -45,26 +45,31 @@ function Root() {
 
 function RootContent() {
 	const location = useLocation()
-	const { data } = useQuery({
-		queryKey: ['isConnected'],
-		queryFn: () => tuyau.isConnected.$get(),
-	})
+	const { data: user } = useUserSuspense()
 
-	const isConnected = data?.data?.isConnected
+	if (!user) {
+		console.log('User is not connected')
+	} else {
+		console.log('User is connected')
+	}
 
-	console.log(isConnected)
+	console.log({ user })
 
 	return (
 		<html lang="fr">
 			<head>
 				<HeadContent />
+				<title>Test</title>
 			</head>
 			<body className="flex flex-col min-h-screen w-screen">
-				<Header isConnected={isConnected ?? false} pathname={location.pathname} />
+				<Header isConnected={user !== null} pathname={location.pathname} />
 				<main className="mx-auto mt-22 flex flex-col w-full items-center">
 					<Outlet />
 				</main>
 				<TanStackDevtools
+					eventBusConfig={{
+						port: 8098,
+					}}
 					config={{
 						position: 'bottom-right',
 					}}

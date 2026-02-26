@@ -15,7 +15,7 @@ import server from '@adonisjs/core/services/server'
  * The error handler is used to convert an exception
  * to an HTTP response.
  */
-server.errorHandler(() => import('#infrastructure/exceptions/handler'))
+server.errorHandler(() => import('#shared/exceptions/handler'))
 
 /**
  * The server middleware stack runs middleware on all the HTTP
@@ -23,8 +23,8 @@ server.errorHandler(() => import('#infrastructure/exceptions/handler'))
  * the request URL.
  */
 server.use([
-	() => import('#infrastructure/middleware/container_bindings_middleware'),
-	() => import('#infrastructure/middleware/force_json_response_middleware'),
+	() => import('#shared/middleware/container_bindings_middleware'),
+	() => import('#shared/middleware/force_json_response_middleware'),
 	() => import('@adonisjs/cors/cors_middleware'),
 ])
 
@@ -36,6 +36,7 @@ router.use([
 	() => import('@adonisjs/core/bodyparser_middleware'),
 	() => import('@adonisjs/session/session_middleware'),
 	() => import('@adonisjs/auth/initialize_auth_middleware'),
+	() => import('@tuyau/superjson/superjson_middleware'),
 ])
 
 /**
@@ -43,6 +44,6 @@ router.use([
  * the routes or the routes group.
  */
 export const middleware = router.named({
-	guest: () => import('#infrastructure/middleware/guest_middleware'),
-	auth: () => import('#infrastructure/middleware/auth_middleware'),
+	guest: () => import('#shared/middleware/guest_middleware'),
+	auth: () => import('#shared/middleware/auth_middleware'),
 })
