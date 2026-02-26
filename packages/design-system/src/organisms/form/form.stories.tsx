@@ -1,6 +1,7 @@
 import { Field } from "@packages/design-system/field";
-import { Form } from "./form";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import { Form } from "./form";
 
 const meta = {
 	component: Form,

@@ -1,8 +1,8 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import react from "@vitejs/plugin-react";
 import UnoCSS from "unocss/vite";
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
+import react from "@vitejs/plugin-react";
 
 const dirname =
 	typeof __dirname !== "undefined"
