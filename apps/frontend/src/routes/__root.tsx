@@ -45,15 +45,15 @@ function Root() {
 
 function RootContent() {
 	const location = useLocation()
-	const { data: user } = useUserSuspense()
+	const { data } = useUserSuspense()
 
-	if (!user) {
+	if (!data.user) {
 		console.log('User is not connected')
 	} else {
 		console.log('User is connected')
 	}
 
-	console.log({ user })
+	console.log(data.user)
 
 	return (
 		<html lang="fr">
@@ -62,7 +62,7 @@ function RootContent() {
 				<title>Test</title>
 			</head>
 			<body className="flex flex-col min-h-screen w-screen">
-				<Header isConnected={user !== null} pathname={location.pathname} />
+				<Header isConnected={data.user !== null} pathname={location.pathname} />
 				<main className="mx-auto mt-22 flex flex-col w-full items-center">
 					<Outlet />
 				</main>

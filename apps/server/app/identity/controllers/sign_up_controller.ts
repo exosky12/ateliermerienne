@@ -20,11 +20,10 @@ export default class SignUpController {
 		const payload = await request.validateUsing(SignUpController.validator)
 
 		await withTransaction(async () => {
-			return response.ok(await this._signUp.execute({ ...payload, auth }))
+			return response.created(await this._signUp.execute({ ...payload, auth }))
 		})
-
 		/**
-		 * Voir ce que l'on renvoie quand l'inscription n'est pas réussie (ex: email déjà utilisé)
+		 * Ici par ex on pourrait faire un dispatchAfterCommit en envoyant un mail de confirmation
 		 */
 	}
 }

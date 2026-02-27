@@ -1,7 +1,7 @@
 import { inject } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 
-import GetUser from '#identity/actions/get_user'
+import GetUser from '#identity/queries/get_user'
 
 @inject()
 export default class GetUserController {
@@ -10,6 +10,6 @@ export default class GetUserController {
 	async execute({ auth, response }: HttpContext) {
 		const user = await this._getUser.execute({ auth })
 
-		return response.ok(user)
+		return response.ok({ user })
 	}
 }

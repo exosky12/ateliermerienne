@@ -12,13 +12,18 @@ export const Route = createFileRoute('/profile')({
 function RouteComponent() {
 	const navigate = useNavigate()
 	const queryClient = useQueryClient()
-	const { data: user } = useUserSuspense()
+	const { data } = useUserSuspense()
 
 	const mutation = useMutation(
 		api.signOut.execute.mutationOptions({
 			onSuccess: async () => {
-				await queryClient.invalidateQueries({ queryKey: ['user'] })
+				queryClient.setQueryData(['user'], null)
+
+				// 2. On redirige AVANT d'invalider pour que l'utilisateur quitte la page protégée
 				await navigate({ to: '/' })
+
+				// 3. On invalide tout le reste en arrière-plan
+				await queryClient.invalidateQueries()
 			},
 		})
 	)
@@ -32,7 +37,7 @@ function RouteComponent() {
 				}}
 				buttonLabel="Déconnexion"
 			/>
-			<h2>{user?.fullName}</h2>
+			<h2>{data.user?.fullName}</h2>
 		</>
 	)
 }
