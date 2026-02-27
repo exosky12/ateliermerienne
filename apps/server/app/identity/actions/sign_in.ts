@@ -11,7 +11,7 @@ interface SignInParams {
 export default class SignIn {
 	async execute(params: SignInParams) {
 		const user = await User.verifyCredentials(params.email, params.password)
-		console.log(user)
 		await params.auth.use('web').login(user)
+		return { user }
 	}
 }

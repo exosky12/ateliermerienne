@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 
-import type User from '#identity/models/user'
+import type User from '#identity/models/user.js'
 
 interface GetUserParams {
 	auth: HttpContext['auth']
