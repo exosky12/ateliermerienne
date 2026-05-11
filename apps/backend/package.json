@@ -17,6 +17,7 @@
     "typecheck": "tsgo --noEmit"
   },
   "imports": {
+    "#app/*": "./app/*.js",
     "#controllers/*": "./app/controllers/*.js",
     "#exceptions/*": "./app/exceptions/*.js",
     "#models/*": "./app/models/*.js",
@@ -37,7 +38,8 @@
     "#config/*": "./config/*.js",
     "#shared/*": "./app/shared/*.js",
     "#utils/*": "./app/shared/utils/*.js",
-    "#contexts/*": "./app/shared/contexts/*.js"
+    "#contexts/*": "./app/shared/contexts/*.js",
+    "#identity/*": "./app/identity/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^8.4.0",
