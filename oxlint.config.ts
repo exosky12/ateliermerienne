@@ -7,6 +7,9 @@ export default defineConfig({
     },
     ignorePatterns: [
         '**/.adonisjs/**',
+        'apps/backend/**/*.d.ts',
+        'apps/backend/**/*.js',
+        'apps/backend/**/*.js.map',
         'node_modules/**',
         'dist/**',
         'build/**',

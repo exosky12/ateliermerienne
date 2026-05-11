@@ -39,7 +39,7 @@ const shieldConfig = defineConfig({
     exceptRoutes: [],
 
     /**
-     * Expose an encrypted XSRF-TOKEN cookie for frontend HTTP clients.
+     * Expose an encrypted XSRF-TOKEN cookie for frontend react HTTP clients.
      */
     enableXsrfCookie: true,
 

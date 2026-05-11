@@ -1,4 +1,4 @@
-import type { InferAuthEvents, Authenticators } from '@adonisjs/auth/types';
+import type { Authenticators, InferAuthEvents } from '@adonisjs/auth/types';
 declare const authConfig: any;
 export default authConfig;
 declare module '@adonisjs/auth/types' {

@@ -14,4 +14,4 @@ export default class User extends User_base {
     currentAccessToken?: AccessToken;
     get initials(): string;
 }
-export {};
+

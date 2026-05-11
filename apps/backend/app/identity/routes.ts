@@ -5,7 +5,7 @@ router
   .group(() => {
     router
       .group(() => {
-        router.post('register', [controllers.identity.Register, 'run'])
+        router.post('register', [controllers.identity.Register, 'run']).as('register')
       })
       .prefix('auth')
       .as('auth')

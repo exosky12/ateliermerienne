@@ -6,6 +6,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev:frontend": "pnpm --filter @ateliermerienne/frontend dev",
+    "build:frontend": "pnpm --filter @ateliermerienne/frontend build",
+    "typecheck:frontend": "pnpm --filter @ateliermerienne/frontend typecheck",
     "typecheck": "tsgo --build",
     "typecheck:watch": "tsgo --build --watch",
     "lint": "oxlint",
