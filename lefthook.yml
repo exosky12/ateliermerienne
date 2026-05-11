@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,tsx,js,jsx,vue,json,md}"
+      run: pnpm oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{ts,tsx,js,jsx,vue}"
+      run: pnpm oxlint --no-error-on-unmatched-pattern --fix {staged_files}
+      stage_fixed: true

@@ -1,28 +1,7 @@
-import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-import viteReact from '@vitejs/plugin-react'
-import { devtools } from '@tanstack/devtools-vite'
-import viteTsConfigPaths from 'vite-tsconfig-paths'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import react from '@vitejs/plugin-react'
 
-const config = defineConfig({
-	resolve: {
-		alias: {
-			'~/': `${__dirname}/src/`,
-			'~registry': `${__dirname}/../server/.adonisjs/client/registry/index.ts`,
-		},
-	},
-	plugins: [
-		devtools(),
-		viteTsConfigPaths({
-			projects: ['./tsconfig.json'],
-		}),
-		tailwindcss(),
-		tanstackStart(),
-		viteReact(),
-		UnoCSS(),
-	],
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
 })
-
-export default config

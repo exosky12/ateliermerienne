@@ -1,10 +1,30 @@
-# Logiciel et Système
+# Dependencies and AdonisJS build
+node_modules
+build
+tmp/*
+!tmp/.gitkeep
+
+# Secrets
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# Frontend assets compiled code
+public/assets
+
+# Build tools specific
+npm-debug.log
+yarn-error.log
+
+# Editors specific
+.fleet
+.idea
+.vscode
+
+# Platform specific
 .DS_Store
-Thumbs.db
-.idea/
-.vscode/
-*.sublime-workspace
-*.sublime-project
+
 
 # Logs
 logs
@@ -14,35 +34,19 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-lint_log.txt
 
-# Dépendances
 node_modules
-.pnpm-store
-
-# Builds et Dist
 dist
-build
-out
-.next
-.nuxt
-.output
+dist-ssr
+*.local
 
-# Environnement
-.env
-.env.local
-.env.*.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Couverture de tests
-coverage
-.nyc_output
-
-# Autres
-.vercel
-tmp/
-
-*storybook.log
-storybook-static
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
