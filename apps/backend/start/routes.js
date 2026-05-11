@@ -1,5 +1,5 @@
-import router from '@adonisjs/core/services/router';
+import router from '@adonisjs/core/services/router'
 router.get('/', () => {
-    return 'hi';
-});
+  return 'hi'
+})
 //# sourceMappingURL=routes.js.map

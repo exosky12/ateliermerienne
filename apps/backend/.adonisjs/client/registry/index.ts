@@ -5,9 +5,7 @@ import type { ApiDefinition } from './tree.d.ts'
 
 const placeholder: any = {}
 
-const routes = {
-,
-} as const satisfies Record<string, AdonisEndpoint>
+const routes = {} as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
 

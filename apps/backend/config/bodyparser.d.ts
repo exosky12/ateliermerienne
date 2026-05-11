@@ -1,2 +1,2 @@
-declare const bodyParserConfig: any;
-export default bodyParserConfig;
+declare const bodyParserConfig: any
+export default bodyParserConfig

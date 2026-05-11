@@ -1,6 +1,6 @@
-import { DateTime } from 'luxon';
+import { DateTime } from 'luxon'
 declare module '@vinejs/vine/types' {
-    interface VineGlobalTransforms {
-        date: DateTime;
-    }
+  interface VineGlobalTransforms {
+    date: DateTime
+  }
 }
