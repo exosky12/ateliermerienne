@@ -34,7 +34,7 @@ Parallel scout: spawn 2-3 `cavecrew-investigator` calls in one message with diff
 
 ## See also
 
-- [`SKILL.md`](./SKILL.md) — full decision matrix and output contracts
+- [`SKILL.md`](SKILL.md) — full decision matrix and output contracts
 - [`agents/cavecrew-investigator.md`](../../agents/cavecrew-investigator.md)
 - [`agents/cavecrew-builder.md`](../../agents/cavecrew-builder.md)
 - [`agents/cavecrew-reviewer.md`](../../agents/cavecrew-reviewer.md)

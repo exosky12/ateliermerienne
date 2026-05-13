@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "createdAt": "2026-05-10T12:58:13.325Z",
+  "scope": "project",
+  "operation": "change-to-agents",
+  "entries": [
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.agents/commands",
+      "kind": "dir",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.claude/commands",
+      "kind": "symlink",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.codex/prompts",
+      "kind": "symlink",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.agents/hooks",
+      "kind": "dir",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.claude/hooks",
+      "kind": "symlink",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.claude/skills",
+      "kind": "symlink",
+      "action": "create"
+    },
+    {
+      "originalPath": "/Users/exosky12/Documents/dev/SpinLab/monorepo/.codex/skills",
+      "kind": "symlink",
+      "action": "create"
+    }
+  ]
+}
