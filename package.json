@@ -20,6 +20,11 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.4",
+  "pnpm": {
+    "overrides": {
+      "@vue/devtools-api": "^8.0.0"
+    }
+  },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260511.1",
     "lefthook": "^2.1.6",
