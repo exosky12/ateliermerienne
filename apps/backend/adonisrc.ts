@@ -111,31 +111,11 @@ export default defineConfig({
         controllers: {
           enabled: true,
           source: './app',
-          glob: ['**/controllers/**/*.ts'],
           importAlias: '#app',
+          glob: ['**/controllers/*_controller.ts'],
         },
-        transformers: {
-          enabled: true,
-          withSharedProps: true,
-          source: './app',
-          glob: ['**/transformers/**/*.ts'],
-          inertiaMiddlewareImportPath: '#core/middleware/inertia_middleware',
-          importAlias: '#app',
-        },
-        events: {
-          enabled: true,
-          source: './app',
-          glob: ['**/events/**/*.ts'],
-          importAlias: '#app',
-        },
-        listeners: {
-          enabled: true,
-          source: './app',
-          glob: ['**/listeners/**/*.ts'],
-          importAlias: '#app',
-        },
+        transformers: { enabled: true },
       }),
-
       generateRegistry(),
     ],
   },

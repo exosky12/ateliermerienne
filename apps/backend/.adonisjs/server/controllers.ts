@@ -5,7 +5,6 @@
 
 export const controllers = {
   identity: {
-    RegisterD: () => import('#app/identity/controllers/register.d'),
-    Register: () => import('#app/identity/controllers/register'),
+    Register: () => import('#app/identity/controllers/register_controller'),
   },
 }

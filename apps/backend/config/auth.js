@@ -7,13 +7,13 @@ const authConfig = defineConfig({
     api: tokensGuard({
       provider: tokensUserProvider({
         tokens: 'accessTokens',
-        model: () => import('apps/backend/app/identity/models/user'),
+        model: () => import('#identity/models/user'),
       }),
     }),
     web: sessionGuard({
       useRememberMeTokens: false,
       provider: sessionUserProvider({
-        model: () => import('apps/backend/app/identity/models/user'),
+        model: () => import('#identity/models/user'),
       }),
     }),
   },
